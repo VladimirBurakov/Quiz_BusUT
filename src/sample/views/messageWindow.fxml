@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MessageBoxController">
+    <children>
+        <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="Пожалуйста введите &#10;целое число&#10; от 5 до 50." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+          <Button fx:id="okButton" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="97.0" mnemonicParsing="false" text="Ок" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </Button>
+    </children>
+</AnchorPane>

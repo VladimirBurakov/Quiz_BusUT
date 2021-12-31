@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="160.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ResultBoxController">
+    <children>
+        <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="Ваш результат:" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+          <Button fx:id="okButton" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="97.0" mnemonicParsing="false" text="Ок" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </Button>
+      <Label fx:id="resultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="37.0" text="5 из 5" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

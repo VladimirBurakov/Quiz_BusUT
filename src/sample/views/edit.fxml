@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="allWindowId" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="10.0" text="Редактирование вопроса и вариантов ответа" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <GridPane alignment="CENTER_LEFT" focusTraversable="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <columnConstraints>
+            <ColumnConstraints minWidth="125.0" prefWidth="125.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="205.0" prefWidth="586.0" />
+            <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="90.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="|" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="95.0" />
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="716.0" layoutY="322.0" text="Правильный&#10;ответ&#10;" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="27.0" layoutY="23.0" text="Вариант №1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" graphicTextGap="0.0" layoutX="123.0" layoutY="23.0" text="№ Вопроса" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="rightAnswerTextFieldId" layoutX="80.0" layoutY="59.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №6" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №5" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №4" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №3" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextArea fx:id="questionTextAreaId" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="firstTextAreaAnswerId" layoutX="120.0" layoutY="51.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="secondTextAreaAnswerId" layoutX="120.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="thirdTextAreaAnswerId" layoutX="120.0" layoutY="133.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="fourthTextAreaAnswerId" layoutX="120.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="fifthTextAreaAnswerId" layoutX="120.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="sixthTextAreaAnswerId" layoutX="120.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Button fx:id="saveButtonId" defaultButton="true" layoutX="130.0" layoutY="423.0" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" onAction="#save" prefWidth="120.0" text="Сохранить" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="questionNumberTextFieldId" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="38.0" text="4.89" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TextField>
+            <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="62.0" text="Вопрос" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="exitButtonId" cancelButton="true" mnemonicParsing="false" onAction="#exitSettings" text="Выйти" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="backButtonId" alignment="CENTER" contentDisplay="RIGHT" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#back" prefWidth="80.0" text="Назад" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="forwardButtonId" alignment="CENTER" contentDisplay="CENTER" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" onAction="#forward" prefWidth="90.0" text="Вперед" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Button defaultButton="true" disable="true" graphicTextGap="2.0" maxWidth="8.0" minWidth="8.0" mnemonicParsing="false" prefWidth="8.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="101.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="questionNumberBigTextFieldId" layoutX="100.0" layoutY="59.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="searchButtonId1" alignment="CENTER" contentDisplay="CENTER" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" onAction="#search" prefWidth="90.0" text="Поиск" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="85.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </GridPane>
+   </children>
+</AnchorPane>

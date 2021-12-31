@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#exitStart" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
+    <children>
+        <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="78.0" prefWidth="482.0" text="Тестирование Bas &#10;&quot;Управление торговлей&quot;" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <GridPane layoutX="-8.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="80.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints maxWidth="-Infinity" prefWidth="80.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="startButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="150.0" text="Старт" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </Button>
+                <Label fx:id="amountQuestionLabel" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" text="Выбирите колическто вопросов в тесте" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </Label>
+                <TextField fx:id="amountQuestionTextArea" alignment="CENTER_RIGHT" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" promptText="20" style="-fx-border-radius: 20px;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </TextField>
+            </children>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+        </GridPane>
+      <TilePane fx:id="settingsImageButton" layoutX="-49.0" layoutY="-68.0" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #FFF8D0; -fx-background-radius: 5px;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <MenuButton mnemonicParsing="false" text="Stat" TilePane.alignment="TOP_LEFT">
+              <items>
+                <MenuItem id="addId" fx:id="addMenuItemId" mnemonicParsing="false" onAction="#add" text="Добавить" />
+                <MenuItem id="editId" fx:id="editMenuItemId" mnemonicParsing="false" onAction="#edit" text="Редактировать" />
+                  <MenuItem id="editId" fx:id="removeMenuItemId1" mnemonicParsing="false" onAction="#remove" text="Удалить" />
+                  <MenuItem id="statId" fx:id="statMenuItemId" mnemonicParsing="false" onAction="#stat" text="Статистика" />
+              </items>
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/D:/java_projects/Quiz/src/sample/image/free-icon-settings-cogwheel-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TilePane>
+    </children>
+</AnchorPane>
