@@ -5,13 +5,10 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
@@ -63,7 +60,7 @@ public class Controller {
             CurrentTestData.setQuestionQuantity(Integer.parseInt(amountQuestion));
             startButton.getScene().getWindow().hide();
             FXMLHelper.loadPage("/sample/views/registration.fxml");
-        };
+        }
     }
 
     @FXML
@@ -77,28 +74,34 @@ public class Controller {
     @FXML
     void add(ActionEvent event) {
         stage = FXMLHelper.loadPage("/sample/views/add.fxml");
-        stage.setMinWidth(600);
-        stage.setMinHeight(500);
+        stage.setMinWidth(660);
+        stage.setMinHeight(550);
+        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        stage.setTitle("Добавить");
     }
 
     @FXML
     void edit(ActionEvent event) {
         stage = FXMLHelper.loadPage("/sample/views/edit.fxml");
-        stage.setMinWidth(640);
-        stage.setMinHeight(500);
+        stage.setMinWidth(660);
+        stage.setMinHeight(550);
+        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        stage.setTitle("Редактировать");
     }
 
     @FXML
     void remove(ActionEvent event) {
         stage = FXMLHelper.loadPage("/sample/views/remove.fxml");
-        stage.setMinWidth(600);
-        stage.setMinHeight(500);
+        stage.setMinWidth(660);
+        stage.setMinHeight(550);
+        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        stage.setTitle("Удалить");
     }
     @FXML
     void stat(ActionEvent event) {
         stage = FXMLHelper.loadPage("/sample/views/statPage.fxml");
-        stage.setMinWidth(400);
-        stage.setMinHeight(300);
+        stage.setMinWidth(440);
+        stage.setMinHeight(330);
     }
 
     @FXML

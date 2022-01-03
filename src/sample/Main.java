@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(500);
         primaryStage.setMinHeight(300);
+        //root.getStylesheets().add("sample/stylesheets/add-edit-remove.css");
         primaryStage.show();
     }
 

@@ -1,0 +1,34 @@
+.root{
+    -fx-background-color: #483d8b;
+    -fx-background-image: url("/sample/image/background-dark-image.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+    -fx-opacity: 0.7;
+}
+.text-area:hover{
+    -fx-background-color: black;
+}
+.text-field:hover{
+    -fx-stroke: black;
+}
+
+.label{
+    -fx-font-weight: bold;
+    -fx-cursor: default;
+    -fx-text-fill: #afeeee;
+    -fx-stroke: black;
+    -fx-stroke-width: 3;
+}
+.button{
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.button:hover{
+    -fx-background-color: yellow;
+    -fx-text-fill: grey;
+}
+.button:pressed{
+    -fx-background-color: green;
+    -fx-text-fill: yellow;
+}

@@ -6,16 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import sample.dao.User;
 import sample.db.DatabaseHandler;
 
 public class StatController {
+
+    @FXML
+    private Label label;
 
     @FXML
     private ResourceBundle resources;
