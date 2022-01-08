@@ -9,6 +9,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -180,14 +182,21 @@ public class EditController {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
         list = new FileDataReceiver().getQuestions();
         setData(list.get(0));
-        allWindowId.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode() == KeyCode.RIGHT){
+                    forwardButtonId.fire();
+                    Platform.runLater( () -> forwardButtonId.requestFocus() );
+                }
+            }
+        });
+        backButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.LEFT){
                     backButtonId.fire();
-                }
-                else if(event.getCode() == KeyCode.RIGHT){
-                    forwardButtonId.fire();
+                    Platform.runLater( () -> backButtonId.requestFocus() );
                 }
             }
         });

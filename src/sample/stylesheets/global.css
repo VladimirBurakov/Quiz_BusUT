@@ -5,52 +5,63 @@
 
     accent-color: #FFC107;               /*background button*/
 
-    text-primary-color: #FFFFFF;         /*color*/
+    text-primary-color: #FFFFFF;         /*texticonscolor*/
     primary-text-color: #212121;         /*textcolor*/
     secondary-text-color: #757575;       /*textcolor*/
     divider-color: #BDBDBD;              /* border-color*/
 }
 
 .root{
-    -fx-background-color: default-primary-color;
+
+    -fx-background-color: light-primary-color;
     -fx-opacity: 0.8;
     -fx-font-family: "arial";
+    -fx-text-fill: primary-text-color;
     -fx-background-image: url("/sample/image/background-image.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: stretch;
 }
 
 .text-area{
-    -fx-opacity: 0.85;
+    -fx-opacity: 0.80;
+    -fx-wrap-text: true;
 }
 
 .text-area:hover{
-    -fx-background-color: dark-primary-color;
-    -fx-opacity: 0.92;
-
+    -fx-opacity: 0.90;
 }
+
 .text-area:focused{
     -fx-opacity: 1.0;
 }
 
+
+.text-field{
+     -fx-opacity: 0.80;
+
+}
 .text-field:hover{
-    -fx-opacity: 0.92;
+    -fx-opacity: 0.90;
+}
+
+.text-field:focused{
+    -fx-opacity: 1.0;
 }
 
 .label{
     -fx-font-weight: bold;
     -fx-font-family: "Western";
     -fx-font-family: cursive;
-    -fx-cursor: default;
-    -fx-border-style: solid;
+    -fx-cursor: text;
+    -fx-text-fill: primary-text-color;
+    /*-fx-border-style: solid;
     -fx-border-width: 3;
     -fx-border-color: rgba(244, 244, 244, 0.8);
-    -fx-border-radius: 5px;
-    -fx-text-fill: primary-text-color;
+    -fx-border-radius: 5px;*/
 }
 .button{
-    -fx-base: #7fffd4;
-    -fx-border-color: derive(-fx-base, -20%);
+    -fx-base: accent-color;
+    -fx-border-color: derive(accent-color, -20%);
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
@@ -64,8 +75,8 @@
 }
 
 .button:hover{
-    -fx-background-color: derive(-fx-base, -30%);
-    -fx-border-color: derive(-fx-base, -50%);
+    -fx-background-color: derive(accent-color, -30%);
+    -fx-border-color: derive(accent-color, -50%);
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
@@ -76,8 +87,8 @@
 
 }
 .button:pressed{
-    -fx-background-color: derive(-fx-base, -60%);
-    -fx-border-color: derive(-fx-base, -80%);
+    -fx-background-color: derive(accent-color, -60%);
+    -fx-border-color: derive(accent-color, -80%);
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
@@ -95,6 +106,27 @@
 
     /*-fx-text-fill: ladder(-text-background, white 0%, white 49%, black 50% black 100%);*/
     /*-fx-label-padding: 2 2 -2 -2;*/
+}
+#undisabledButton{
+     -fx-base: accent-color;
+        -fx-border-color: derive(accent-color, -20%);
+        -fx-background-radius: 5px;
+        -fx-border-radius: 5px;
+        -fx-border-width: 1px;
+        -fx-background-insets: 1;
+        -fx-opacity: 1.0;
+        -fx-text-fill: navy;
+}
+.button:focused{
+     -fx-text-fill: #FFFFFF;
+        -fx-font: 15pt "Raleway SemiBold";
+        -fx-background-color: #000000, #720D4D, #D03A9A, #DD70B6, #B01378, #CC2C93, #D03A9A, #C81688;
+        -fx-background-insets: 0, 1, 1 2 2 1, 1 2 2 2, 2, 2 3 3 2, 2 3 3 3, 3;
+        -fx-background-radius: 0;
+        -fx-padding: 4px 20px;
+        -fx-border-insets: 0px;
+        -fx-border-radius: 0px;
+        -fx-border-width: 0px;
 }
 
 
@@ -115,8 +147,8 @@
     -fx-background-radius: 3, 2;
     -fx-cursor: text;
     -fx-padding: 0.333333em 0.583em 0.333333em 0.583em; /* 4 7 4 7 */
-}
-.text-input:focused {
+}*/
+/*.text-input:focused {
     -fx-highlight-fill: -fx-accent;
     -fx-highlight-text-fill: white;
     -fx-background-color:

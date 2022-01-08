@@ -16,7 +16,7 @@
       </Label>
       <GridPane alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
         <columnConstraints>
-            <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="115.0" />
+            <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="482.0" prefWidth="482.0" />
         </columnConstraints>
         <rowConstraints>
@@ -28,7 +28,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -52,7 +52,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
-            <Button fx:id="addButtonId" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#writeInfo" prefWidth="110.0" text="Добавить" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Button id="undisabledButton" fx:id="addButtonId" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#writeInfo" prefWidth="110.0" text="Добавить" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -70,7 +70,7 @@
             </Label>
             <TextField fx:id="questionNumberTextFieldId" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets right="5.0" />
+                  <Insets right="2.0" />
                </GridPane.margin>
             </TextField>
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="27.0" layoutY="23.0" text="Вариант №1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -94,7 +94,7 @@
             </Label>
             <TextField fx:id="rightAnswerTextFieldId" disable="true" layoutX="80.0" layoutY="59.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8">
                <GridPane.margin>
-                  <Insets left="5.0" />
+                  <Insets left="2.0" />
                </GridPane.margin>
             </TextField>
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="25.0" layoutY="103.0" text="Вариант №6" GridPane.halignment="CENTER" GridPane.rowIndex="7">

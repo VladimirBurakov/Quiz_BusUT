@@ -1,7 +1,9 @@
 package sample.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -181,18 +183,30 @@ public class RemoveController {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
         list = new FileDataReceiver().getQuestions();
         setData(list.get(0));
-        allWindowId.setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+        forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode() == KeyCode.RIGHT){
+                    forwardButtonId.fire();
+                    Platform.runLater( () -> forwardButtonId.requestFocus() );
+                }
+            }
+        });
+        backButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.LEFT){
                     backButtonId.fire();
-                }
-                else if(event.getCode() == KeyCode.RIGHT){
-                    forwardButtonId.fire();
+                    Platform.runLater( () -> backButtonId.requestFocus() );
                 }
             }
         });
-
+        for(TextArea textArea: textAreas){
+            textArea.setEditable(false);
+        }
+        questionNumberTextFieldId.setEditable(false);
+        rightAnswerTextFieldId.setEditable(false);
     }
     private void setData(Questions question){
         //Обнуление полей ответов

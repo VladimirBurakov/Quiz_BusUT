@@ -76,7 +76,7 @@ public class Controller {
         stage = FXMLHelper.loadPage("/sample/views/add.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
-        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
         stage.setTitle("Добавить");
     }
 
@@ -85,7 +85,7 @@ public class Controller {
         stage = FXMLHelper.loadPage("/sample/views/edit.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
-        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
         stage.setTitle("Редактировать");
     }
 
@@ -94,7 +94,7 @@ public class Controller {
         stage = FXMLHelper.loadPage("/sample/views/remove.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
-        stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
+        //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
         stage.setTitle("Удалить");
     }
     @FXML

@@ -141,10 +141,11 @@ public class AddController {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 rightAnswerString = rightAnswerTextFieldId.getText();
                 if(Pattern.matches("[1-6]", rightAnswerString)){
-                    rightAnswerTextFieldId.setStyle("-fx-background-color: #AAFFAA");
+                   // rightAnswerTextFieldId.setStyle("-fx-background-color: #AAFFAA");
                     addButtonId.setDisable(false);
+                    addButtonId.setStyle("/sample/stylesheets/undisabledButton.css");
                 }else{
-                    rightAnswerTextFieldId.setStyle("-fx-background-color: #FF1111");
+                    //rightAnswerTextFieldId.setStyle("-fx-background-color: #FF1111");
                     FXMLHelper.setMessage("Ответ должна быть\nцифра от 1 \nдо 6 включительно!");
                     FXMLHelper.loadPage("/sample/views/messageWindow.fxml");
                 }

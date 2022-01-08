@@ -25,6 +25,7 @@ public class FXMLHelper {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setMinHeight(130);
         stage.setMinWidth(200);
+        stage.getScene().getStylesheets().add(FXMLHelper.class.getResource("/sample/stylesheets/global.css").toExternalForm());
         stage.show();
         return stage;
     }

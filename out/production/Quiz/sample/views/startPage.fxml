@@ -55,7 +55,7 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </GridPane>
-      <TilePane fx:id="settingsImageButton" layoutX="-49.0" layoutY="-68.0" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #FFF8D0; -fx-background-radius: 5px;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <TilePane fx:id="settingsImageButton" layoutX="-49.0" layoutY="-68.0" prefHeight="30.0" prefWidth="70.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <MenuButton mnemonicParsing="false" text="Stat" TilePane.alignment="TOP_LEFT">
               <items>
