@@ -18,7 +18,7 @@
         <columnConstraints>
             <ColumnConstraints minWidth="140.0" prefWidth="140.0" />
           <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="205.0" prefWidth="586.0" />
-            <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="90.0" />
+            <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="95.0" prefWidth="95.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -204,7 +204,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="forwardButtonId" alignment="CENTER" contentDisplay="CENTER" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" onAction="#forward" prefWidth="90.0" text="Вперед" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10">
+            <Button fx:id="forwardButtonId" alignment="CENTER" contentDisplay="CENTER" maxWidth="95.0" minWidth="95.0" mnemonicParsing="false" onAction="#forward" prefWidth="95.0" text="Вперед" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10">
                <font>
                   <Font size="18.0" />
                </font>
