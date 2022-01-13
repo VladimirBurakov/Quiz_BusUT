@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -21,7 +22,7 @@
               <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Имя" />
                 <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Фамилия" />
-                  <TableColumn fx:id="dataTimeColumn" prefWidth="75.0" text="Дата и время" />
+                  <TableColumn fx:id="dataTimeColumn" prefWidth="85.0" text="Дата и время" />
                   <TableColumn fx:id="questionAmountColumn" prefWidth="75.0" text="Кол-во вопр." />
                   <TableColumn fx:id="answerAmountColumn" prefWidth="75.0" text="Кол-во отв." />
               </columns>

@@ -1,15 +1,4 @@
-*{
-    dark-primary-color: #0097A7;         /*background*/
-    default-primary-color: #00BCD4;      /*background*/
-    light-primary-color: #B2EBF2;        /*background*/
 
-    accent-color: #FFC107;               /*background button*/
-
-    text-primary-color: #FFFFFF;         /*texticonscolor*/
-    primary-text-color: #212121;         /*textcolor*/
-    secondary-text-color: #757575;       /*textcolor*/
-    divider-color: #BDBDBD;              /* border-color*/
-}
 .button{
     -fx-base: accent-color;
     -fx-border-color: derive(accent-color, -20%);

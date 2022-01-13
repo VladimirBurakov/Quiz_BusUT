@@ -12,18 +12,20 @@
 }
 
 .root{
-    -fx-background-color: light-primary-color;
-    -fx-opacity: 0.8;
+    -fx-background-color: black;
+    -fx-opacity: 1;
     -fx-font-family: "arial";
     -fx-text-fill: dark-text-primary-color;
     -fx-background-image: url("/sample/image/background-image.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: stretch;
+
 }
+
 .context-menu{
     -fx-translate-y: 5px;
     -fx-background-color: transparent;
-    -fx-border-color: text-primary-color;
+    -fx-border-color: #3c7fb1;
     -fx-border-radius: 5px;
     -fx-border-width: 1.5px;
 }
@@ -42,13 +44,13 @@
 }
 
 .menu-button{
-    -fx-background-color: accent-color;
-    -fx-border-color: derive(accent-color, -10%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-    -fx-background-insets: 2;
-    -fx-opacity: 1.0;
+    -fx-background-color: #3c7fb1,
+                                linear-gradient(#fafdfe, #e8f5fc),
+                                linear-gradient(#eaf6fd 0%, #d9f0fa 49%, #a7d9f5 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 3, 10, 3, 10;
+    -fx-text-fill: super-dark-primary-text-color;
 }
 .menu-button .label{
      -fx-font-weight: 600;
@@ -56,39 +58,37 @@
      -fx-text-fill: super-dark-primary-text-color;
 }
 .menu-item{
-    -fx-background-color: derive(accent-color, 20%);
+    -fx-background-color: #3c7fb1,
+                      linear-gradient(#fafdfe, #e8f5fc),
+                      linear-gradient(#eaf6fd 0%, #d9f0fa 49%, #a7d9f5 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 3, 10, 3, 10;
     -fx-border-color: transparent;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
     -fx-border-width: 2px;
-    -fx-background-insets: 2;
+    -fx-border-radius: 5px;
     -fx-opacity: 1.0;
     -fx-text-fill: super-dark-primary-text-color;
 }
 
 .button{
     -fx-font-size: 18px;
-    -fx-background-color: accent-color;
-    -fx-border-color: derive(accent-color, -10%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-    -fx-background-insets: 2;
-    -fx-opacity: 1.0;
+    -fx-background-color: #3c7fb1,
+                                    linear-gradient(#fafdfe, #e8f5fc),
+                                    linear-gradient(#eaf6fd 0%, #d9f0fa 49%, #a7d9f5 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10, 30, 10, 30;
     -fx-text-fill: super-dark-primary-text-color;
 }
 
 .menu-button:hover{
-    -fx-font-size: 12px;
-    -fx-background-color: derive(accent-color, 10%);
-    -fx-border-color: derive(accent-color, -20%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-    -fx-background-insets: 2;
-    -fx-opacity: 0.85;
+    -fx-background-color: derive(#3c7fb1, 20%),
+                                    linear-gradient(derive(#fafdfe, 20%), derive(#e8f5fc, 20%)),
+                                    linear-gradient(derive(#eaf6fd,20%) 0%, derive(#d9f0fa, 20%) 49%, derive(#a7d9f5, 20%) 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
     -fx-text-fill: dark-text-primary-color;
-    /*-fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);*/
 }
 
 .menu-button:hover .label{
@@ -98,13 +98,16 @@
       }
 
 .menu-item:hover{
-    -fx-background-color: derive(accent-color, 20%);
-    -fx-border-color: derive(accent-color, 0%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
+    -fx-background-color: #3c7fb1,
+                      linear-gradient(#fafdfe, #e8f5fc),
+                      linear-gradient(#eaf6fd 0%, #d9f0fa 49%, #a7d9f5 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 3, 10, 3, 10;
+    -fx-border-color: derive(#3c7fb1, 0%);
+    -fx-border-radius: 3px;
     -fx-border-width: 2px;
-    -fx-background-insets: 2;
-    -fx-opacity: 0.85;
+    -fx-opacity: 1;
     -fx-text-fill: dark-text-primary-color;
     /*-fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);*/
 }
@@ -115,33 +118,34 @@
 }
 
 .button:hover{
-    -fx-background-color: derive(accent-color, 10%);
-    -fx-border-color: derive(accent-color, -10%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-    -fx-background-insets: 2;
-    -fx-opacity: 0.85;
+    -fx-background-color: derive(#3c7fb1, 20%),
+                                        linear-gradient(derive(#fafdfe, 20%), derive(#e8f5fc, 20%)),
+                                        linear-gradient(derive(#eaf6fd,20%) 0%, derive(#d9f0fa, 20%) 49%, derive(#a7d9f5, 20%) 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10, 30, 10, 30;
     -fx-text-fill: dark-text-primary-color;
     /*-fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);*/
 }
 
 .button:pressed{
-    -fx-background-color: derive(accent-color, -30%);
-    -fx-border-color: derive(accent-color, -50%);
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 1px;
-    -fx-background-insets: 1;
+    -fx-background-color: derive(#3c7fb1, -15%),
+                          linear-gradient(derive(#fafdfe, -15%), derive(#e8f5fc, -15%)),
+                          linear-gradient(derive(#eaf6fd, -25%) 0%, derive(#d9f0fa, -25%) 49%, derive(#a7d9f5, -25%) 100%);
+    -fx-background-radius: 3, 2, 1;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10, 30, 10, 30;
     -fx-translate-x: -2;
     -fx-translate-y: 2;
-    -fx-border-style: solid;
     -fx-text-fill: light-text-primary-color;
 }
 .button:disabled{
-    -fx-background-color: derive(grey, 50%);
+    -fx-background-color: linear-gradient(to top, #555555 0%, #999999 40%, #cccccc 100%);
     -fx-border-color: derive(grey, 10%);
-    -fx-opacity: 0.5;
+    -fx-background-insets: 0, 2, 4;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-opacity: 0.75;
 }
 
 .text-field{
@@ -155,8 +159,8 @@
 
 .text-field:focused{
     -fx-opacity: 1.0;
+    -fx-highlight-fill: mistyrose;
     -fx-highlight-text-fill: blue;
-    -fx-highlight-fill: blue;
 }
 
 .text-area{

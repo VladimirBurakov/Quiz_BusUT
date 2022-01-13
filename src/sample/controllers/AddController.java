@@ -67,6 +67,7 @@ public class AddController {
             writeToFile(result);
         });
         exitSettings();*/
+        setInitialValue();
         fieldsBlockageController();
     }
     private void setInitialValue(){
@@ -115,19 +116,23 @@ public class AddController {
 
         questionTextAreaId.setOnKeyTyped(event -> {
             firstTextAreaAnswerId.setDisable(false);
+            turnOnAddButton();
         });
 
         firstTextAreaAnswerId.setOnKeyTyped(event -> {
             secondTextAreaAnswerId.setDisable(false);
+            turnOnAddButton();
         });
 
         secondTextAreaAnswerId.setOnKeyTyped(event -> {
             thirdTextAreaAnswerId.setDisable(false);
+            turnOnAddButton();
         });
 
         thirdTextAreaAnswerId.setOnKeyTyped(event -> {
             fourthTextAreaAnswerId.setDisable(false);
             rightAnswerTextFieldId.setDisable(false);
+            turnOnAddButton();
         });
 
         fourthTextAreaAnswerId.setOnKeyTyped(event -> {
@@ -136,22 +141,36 @@ public class AddController {
         fifthTextAreaAnswerId.setOnKeyTyped(event -> {
             sixthTextAreaAnswerId.setDisable(false);
         });
-        rightAnswerTextFieldId.setOnKeyPressed(keyEvent -> {
-            String rightAnswerString;
-            if(keyEvent.getCode() == KeyCode.ENTER){
-                rightAnswerString = rightAnswerTextFieldId.getText();
-                if(Pattern.matches("[1-6]", rightAnswerString)){
-                   // rightAnswerTextFieldId.setStyle("-fx-background-color: #AAFFAA");
-                    addButtonId.setDisable(false);
-                    addButtonId.setStyle("/sample/stylesheets/undisabledButton.css");
-                }else{
-                    //rightAnswerTextFieldId.setStyle("-fx-background-color: #FF1111");
-                    FXMLHelper.setMessage("Ответ должна быть\nцифра от 1 \nдо 6 включительно!");
-                    FXMLHelper.loadPage("/sample/views/messageWindow.fxml");
-                }
-            }
+        rightAnswerTextFieldId.setOnAction(keyEvent -> {
+            turnOnAddButton();
         });
 
+    }
+
+    private boolean checkRightAnswerTextField() {
+        String rightAnswerString;
+        if (!rightAnswerTextFieldId.getText().isEmpty()) {
+            rightAnswerString = rightAnswerTextFieldId.getText();
+            if (Pattern.matches("[1-6]", rightAnswerString)) {
+                rightAnswerTextFieldId.setStyle("-fx-background-color: #AAFFAA");
+                return true;
+            }
+            else{
+                rightAnswerTextFieldId.setStyle("-fx-background-color: #FF1111");
+                FXMLHelper.setMessage("Ответ должна быть\nцифра от 1 \nдо 6 включительно!");
+                FXMLHelper.loadPage("/sample/views/messageWindow.fxml");
+            }
+
+        }
+        return false;
+    }
+
+    private void turnOnAddButton(){
+        if(checkRightAnswerTextField() && !questionTextAreaId.getText().isEmpty() && !firstTextAreaAnswerId.getText().isEmpty() && !secondTextAreaAnswerId.getText().isEmpty() && !thirdTextAreaAnswerId.getText().isEmpty()){
+            addButtonId.setDisable(false);
+        }else{
+            addButtonId.setDisable(true);
+        }
     }
 
     private String readerFromForm(){

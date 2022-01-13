@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#exitStart" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#exitStart" prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
     <children>
         <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="78.0" prefWidth="482.0" text="Тестирование Bas &#10;&quot;Управление торговлей&quot;" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <font>
@@ -27,9 +27,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="startButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="150.0" text="Старт" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                <Button fx:id="startButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" text="Старт" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -55,7 +56,7 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </GridPane>
-      <TilePane fx:id="settingsImageButton" layoutX="-49.0" layoutY="-68.0" prefHeight="30.0" prefWidth="70.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <TilePane fx:id="settingsImageButton" layoutX="-49.0" layoutY="-68.0" prefHeight="30.0" prefWidth="70.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <MenuButton mnemonicParsing="false" text="Stat" TilePane.alignment="TOP_LEFT">
               <items>
@@ -67,7 +68,7 @@
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/D:/java_projects/Quiz/src/sample/image/free-icon-settings-cogwheel-button.png" />
+                        <Image url="@../image/free-icon-settings-cogwheel-button.png" />
                      </image>
                   </ImageView>
                </graphic>

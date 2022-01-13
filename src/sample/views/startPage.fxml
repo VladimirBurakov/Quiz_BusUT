@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
@@ -26,9 +27,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="startButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="120.0" text="Старт" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                <Button fx:id="startButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" text="Старт" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -66,7 +68,7 @@
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/D:/java_projects/Quiz/src/sample/image/free-icon-settings-cogwheel-button.png" />
+                        <Image url="@../image/free-icon-settings-cogwheel-button.png" />
                      </image>
                   </ImageView>
                </graphic>
