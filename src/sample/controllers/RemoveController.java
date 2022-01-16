@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.dao.FileDataReceiver;
 import sample.dao.Questions;
+import sample.dao.TestDataManager;
 import sample.helper.FXMLHelper;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RemoveController {
+public class RemoveController extends AbstractDataController{
 
     @FXML
     private ResourceBundle resources;
@@ -86,46 +87,11 @@ public class RemoveController {
     @FXML
     private TextArea questionTextAreaId;
 
-    private int counter = 0;
-    private ArrayList<Questions> list;
-    private TextArea[] textAreas;
-
     @FXML
     void save(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
-        list.remove(counter);
+        saveTo();
         counter--;
         setData(list.get(counter));
-
-        String file = "D:\\java_projects\\Quiz\\src\\sample\\dao\\BAS_UT_Base.csv";
-        List<String> stringList = new ArrayList<>();
-        String info;
-            for(Questions question: list){
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(question.getNumber());
-                stringBuilder.append(" ");
-                stringBuilder.append(question.getQuestion());
-                stringBuilder.append("\n^");
-                for (int i = 0; i < question.getAnswers().length; i++) {
-                    String[] array = question.getAnswers();
-                    if (!array[i].isEmpty()) {
-                        stringBuilder.append("\n");
-                        stringBuilder.append(array[i]);
-                        stringBuilder.append("\n^");
-                    }
-                }
-
-                stringBuilder.append("\n");
-                stringBuilder.append(question.getResult());
-                stringBuilder.append("\n*\n");
-
-                info = stringBuilder.toString();
-                stringList.add(info);
-            }
-        try {
-            Files.write(Paths.get(file), stringList, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
@@ -181,7 +147,7 @@ public class RemoveController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = new FileDataReceiver().getQuestions();
+        list = TestDataManager.getList();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -208,7 +174,21 @@ public class RemoveController {
         questionNumberTextFieldId.setEditable(false);
         rightAnswerTextFieldId.setEditable(false);
     }
-    private void setData(Questions question){
+
+    void readerFromForm() {
+        /*Questions question = new Questions();
+        question.setNumber(questionNumberTextFieldId.getText());
+        question.setQuestion(questionTextAreaId.getText());
+        String [] array = new String[6];
+        for(int i = 0; i < array.length; i++){
+            array[i] = textAreas[i].getText();
+        }
+        question.setAnswers(array);
+        question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));*/
+        list.remove(counter);
+    }
+
+     void setData(Questions question){
         //Обнуление полей ответов
         for(TextArea textArea: textAreas){
             textArea.setText("");

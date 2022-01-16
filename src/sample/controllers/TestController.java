@@ -10,7 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import sample.dao.CurrentTestData;
+import sample.Main;
+import sample.dao.TestDataManager;
 import sample.dao.Questions;
 import sample.helper.FXMLHelper;
 
@@ -81,8 +82,8 @@ public class TestController {
     @FXML
     void initialize() {
         //получение текущего массива с ограниченным числом вопросов
-        list = new CurrentTestData().getCurrentTestArray();
-        intAllAmountAnswerLabel.setText("" + CurrentTestData.getQuestionQuantity());
+        list = TestDataManager.getCurrentTestArray();
+        intAllAmountAnswerLabel.setText("" + TestDataManager.getQuestionQuantity());
         intAmountAnswerLabel.setText(" "+ counter);
         Questions question = list.get(counter);
         takeTest(question);
@@ -122,7 +123,7 @@ public class TestController {
                 int myAnswer = Integer.parseInt(selection.getText());
                 //сравнение с результатом, если результат не верный вывод правильного ответа.
                 if (myAnswer == question.getResult()) {
-                    CurrentTestData.setScore(CurrentTestData.getScore() + 1);
+                    TestDataManager.setScore(TestDataManager.getScore() + 1);
                     currentAnswerNumberLabel.setText(String.valueOf("Верный ответ: " + question.getResult()) + "\nПоздравляем ваш ответ верный! :-)))\n");
                 } else {
                     currentAnswerNumberLabel.setText("Вернный отвер: " + question.getResult() + "\nВаш ответ неверный! :-(((\n");
@@ -142,7 +143,7 @@ public class TestController {
             if(selection != null){
                 counter++;
                 // Окончание и запуск результата !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                if(counter >= CurrentTestData.getQuestionQuantity()){
+                if(counter >= TestDataManager.getQuestionQuantity()){
                     nextButton.getScene().getWindow().hide();
                     FXMLHelper.loadPage("/sample/views/result.fxml");
                 }else{

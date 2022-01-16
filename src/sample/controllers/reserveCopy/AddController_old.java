@@ -1,4 +1,4 @@
-package sample.controllers;
+package sample.controllers.reserveCopy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,14 +6,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import sample.dao.Questions;
-import sample.dao.TestDataManager;
 import sample.helper.FXMLHelper;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class AddController extends AbstractDataController {
+public class AddController_old {
 
     @FXML
     private ResourceBundle resources;
@@ -56,8 +55,12 @@ public class AddController extends AbstractDataController {
 
     @FXML
     void initialize() {
-        textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = TestDataManager.getList();
+        /*setInitialValue();
+        addButtonId.setOnAction(event -> {
+            String result = readerFromForm();
+            writeToFile(result);
+        });
+        exitSettings();*/
         setInitialValue();
         fieldsBlockageController();
     }
@@ -164,23 +167,49 @@ public class AddController extends AbstractDataController {
         }
     }
 
-    void readerFromForm(){
-        Questions question = new Questions();
-        question.setNumber(questionNumberTextFieldId.getText());
-        question.setQuestion(questionTextAreaId.getText());
-        String [] array = new String[6];
-        for(int i = 0; i < array.length; i++){
-            array[i] = textAreas[i].getText();
-        }
-        question.setAnswers(array);
-        question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));
-        list.add(question);
+    private String readerFromForm(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(questionNumberTextFieldId.getText());
+        stringBuilder.append(" ");
+        stringBuilder.append(questionTextAreaId.getText());
+        stringBuilder.append("\n^");
+        if(!firstTextAreaAnswerId.getText().isEmpty()){
+            stringBuilder.append("\n\t1. ");
+            stringBuilder.append(firstTextAreaAnswerId.getText());
+            stringBuilder.append("\n^");
+            if(!secondTextAreaAnswerId.getText().isEmpty()){
+                stringBuilder.append("\n\t2. ");
+                stringBuilder.append(secondTextAreaAnswerId.getText());
+                stringBuilder.append("\n^");
+                }
+                if(!thirdTextAreaAnswerId.getText().isEmpty()){
+                    stringBuilder.append("\n\t3. ");
+                    stringBuilder.append(thirdTextAreaAnswerId.getText());
+                    stringBuilder.append("\n^");
+                    if(!fourthTextAreaAnswerId.getText().isEmpty()){
+                        stringBuilder.append("\n\t4. ");
+                        stringBuilder.append(fourthTextAreaAnswerId.getText());
+                        stringBuilder.append("\n^");
+                        if(!fifthTextAreaAnswerId.getText().isEmpty()){
+                            stringBuilder.append("\n\t5. ");
+                            stringBuilder.append(fifthTextAreaAnswerId.getText());
+                            stringBuilder.append("\n^");
+                            if(!sixthTextAreaAnswerId.getText().isEmpty()){
+                                stringBuilder.append("\n\t6. ");
+                                stringBuilder.append(sixthTextAreaAnswerId.getText());
+                                stringBuilder.append("\n^");
+                            }
+                        }
+                    }
+                }
+            }
+            stringBuilder.append("\n");
+            stringBuilder.append(rightAnswerTextFieldId.getText());
+            stringBuilder.append("\n*\n");
+
+        return stringBuilder.toString();
     }
 
-    @Override
-    void setData(Questions question) {
-        setInitialValue();
-    }
 
     @FXML
     void exitSettings(ActionEvent event) {
@@ -190,7 +219,15 @@ public class AddController extends AbstractDataController {
 
     @FXML
     void save(ActionEvent event){
-        saveTo();
-        setInitialValue();
+        /*String result = readerFromForm();
+        writeToFile(result);
+        setInitialValue();*/
     }
+
+     /*private void exitSettings(){
+        exitButtonId.setOnAction(event -> {
+            Stage stage = (Stage) exitButtonId.getScene().getWindow();
+            stage.close();
+        });
+    }*/
 }

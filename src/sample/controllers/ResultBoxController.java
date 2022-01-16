@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import sample.dao.CurrentTestData;
+import sample.dao.TestDataManager;
 import sample.dao.User;
 import sample.db.DatabaseHandler;
 
@@ -30,12 +30,12 @@ public class ResultBoxController {
     @FXML
     void initialize() {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        User user = CurrentTestData.getCurrentUser();
-        user.setRightAnswersAmount(CurrentTestData.getScore());
+        User user = TestDataManager.getCurrentUser();
+        user.setRightAnswersAmount(TestDataManager.getScore());
         dbHandler.saveResult(user); //сохрание результата теста
 
         this.messageLabel.setText("Ваш результат:");
-        String result = CurrentTestData.getScore() + " из " + CurrentTestData.getQuestionQuantity();
+        String result = TestDataManager.getScore() + " из " + TestDataManager.getQuestionQuantity();
         resultLabel.setText(result);
         okButton.setOnAction(event -> {
             Stage stage = (Stage) okButton.getScene().getWindow();

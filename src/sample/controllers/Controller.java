@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -12,12 +13,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
-import sample.dao.CurrentTestData;
+import sample.dao.FileDataReceiver;
+import sample.dao.JsonFileDataReceiver;
+import sample.dao.TestDataManager;
 import sample.helper.CheckHelper;
 import sample.helper.FXMLHelper;
 
 public class Controller {
-
     @FXML
     private ResourceBundle resources;
 
@@ -45,7 +47,6 @@ public class Controller {
     @FXML
     private MenuItem statMenuItemId;
 
-
     @FXML
     private TextField amountQuestionTextArea;
 
@@ -57,7 +58,7 @@ public class Controller {
     void start(ActionEvent event) {
         String amountQuestion = amountQuestionTextArea.getText();
         if(CheckHelper.isRightRange(amountQuestion, 5, 50)){
-            CurrentTestData.setQuestionQuantity(Integer.parseInt(amountQuestion));
+            TestDataManager.setQuestionQuantity(Integer.parseInt(amountQuestion));
             startButton.getScene().getWindow().hide();
             FXMLHelper.loadPage("/sample/views/registration.fxml");
         }
@@ -106,12 +107,7 @@ public class Controller {
 
     @FXML
     void initialize() {
-        /*startButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                System.out.println("Кнопка включена");
-            }
-        });*/
+
     }
 }
 

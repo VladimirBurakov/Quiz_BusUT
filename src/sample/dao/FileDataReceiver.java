@@ -25,7 +25,7 @@ public class FileDataReceiver implements DataReceiver{
             int innerArraySize = innerArray.length;
             question = innerArray[0].trim();
             number = question.substring(0, 4).trim();
-            question = question.substring(4);
+            question = question.substring(4).trim();
 
             int result = Integer.parseInt(innerArray[innerArraySize-1].trim());
             answers = Arrays.copyOfRange(innerArray, 1, innerArraySize - 1);

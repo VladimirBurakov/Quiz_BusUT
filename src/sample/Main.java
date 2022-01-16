@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.dao.Questions;
+import sample.dao.*;
 import sample.helper.CheckHelper;
 
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getResource("views/startPage.fxml"));
         primaryStage.setTitle("Burakov Bas UT Test Program");
         primaryStage.setScene(new Scene(root));
@@ -24,6 +25,7 @@ public class Main extends Application {
         primaryStage.getScene().getStylesheets().add(Main.class.getResource("/sample/stylesheets/global.css").toExternalForm());
         //root.getStylesheets().add("sample/stylesheets/add-edit-remove.css");
         primaryStage.show();
+
     }
 
     public static ArrayList<Questions>list = new ArrayList<>();
@@ -31,7 +33,6 @@ public class Main extends Application {
         launch(args);
         //ArrayList<Questions>list = new FileData().getQuestions();
         //takeTest(list);
-
     }
 
     /*public static void takeUITest(ArrayList<Questions>list){

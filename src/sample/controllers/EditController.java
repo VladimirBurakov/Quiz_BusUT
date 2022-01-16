@@ -1,11 +1,11 @@
 package sample.controllers;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,8 +14,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -24,13 +22,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.dao.CurrentTestData;
-import sample.dao.DataReceiver;
-import sample.dao.FileDataReceiver;
-import sample.dao.Questions;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import sample.Main;
+import sample.dao.*;
 import sample.helper.FXMLHelper;
 
-public class EditController {
+public class EditController extends AbstractDataController {
     @FXML
     private AnchorPane allWindowId;
 
@@ -88,43 +86,54 @@ public class EditController {
     @FXML
     private TextArea questionTextAreaId;
 
-    private int counter = 0;
-    private ArrayList<Questions> list;
-    private TextArea[] textAreas;
+     void setData(Questions question){
+        //Обнуление полей ответов
+        for(TextArea textArea: textAreas){
+            textArea.setText("");
+        }
+        //получение номера вопроса
+        questionNumberTextFieldId.setText(question.getNumber());
+
+        //получение вопроса
+        questionTextAreaId.setText(question.getQuestion());
+
+        //перебор массива String[] в Questions объекте и получение полей вариантов ответа
+        int arrayQuestionAnswersLength = question.getAnswers().length;
+        for (int i = 0; i < arrayQuestionAnswersLength; i++) {
+            switch (i){
+                case 0: firstTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+                case 1: secondTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+                case 2: thirdTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+                case 3: fourthTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+                case 4: fifthTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+                case 5: sixthTextAreaAnswerId.setText(question.getAnswers()[i]);
+                    break;
+            }
+        }
+
+        // получение правильного ответа
+        rightAnswerTextFieldId.setText(String.valueOf(question.getResult()));
+    }
+     void readerFromForm(){
+        Questions question = list.get(counter);
+        question.setNumber(questionNumberTextFieldId.getText());
+        question.setQuestion(questionTextAreaId.getText());
+        String [] array = new String[6];
+        for(int i = 0; i < array.length; i++){
+            array[i] = textAreas[i].getText() != null ? textAreas[i].getText() : "";
+        }
+        question.setAnswers(array);
+        question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));
+    }
 
     @FXML
-    void save(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
-        readerFromForm();
-        String file = "D:\\java_projects\\Quiz\\src\\sample\\dao\\BAS_UT_Base.csv";
-        List<String> stringList = new ArrayList<>();
-        String info;
-            for(Questions question: list){
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(question.getNumber());
-                stringBuilder.append(" ");
-                stringBuilder.append(question.getQuestion());
-                stringBuilder.append("\n^");
-                for (int i = 0; i < question.getAnswers().length; i++) {
-                    String[] array = question.getAnswers();
-                    if (!array[i].isEmpty()) {
-                        stringBuilder.append("\n");
-                        stringBuilder.append(array[i]);
-                        stringBuilder.append("\n^");
-                    }
-                }
-
-                stringBuilder.append("\n");
-                stringBuilder.append(question.getResult());
-                stringBuilder.append("\n*\n");
-
-                info = stringBuilder.toString();
-                stringList.add(info);
-            }
-        try {
-            Files.write(Paths.get(file), stringList, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void save(ActionEvent event) {
+        saveTo();
     }
 
     @FXML
@@ -180,8 +189,9 @@ public class EditController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = new FileDataReceiver().getQuestions();
+        list = TestDataManager.getList();
         setData(list.get(0));
+
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -201,50 +211,6 @@ public class EditController {
             }
         });
 
-    }
-    private void setData(Questions question){
-        //Обнуление полей ответов
-        for(TextArea textArea: textAreas){
-            textArea.setText("");
-        }
-        //получение номера вопроса
-        questionNumberTextFieldId.setText(question.getNumber());
-
-        //получение вопроса
-        questionTextAreaId.setText(question.getQuestion());
-
-        //перебор массива String[] в Questions объекте и получение полей вариантов ответа
-        int arrayQuestionAnswersLength = question.getAnswers().length;
-        for (int i = 0; i < arrayQuestionAnswersLength; i++) {
-            switch (i){
-                case 0: firstTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                case 1: secondTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                case 2: thirdTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                case 3: fourthTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                case 4: fifthTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                case 5: sixthTextAreaAnswerId.setText(question.getAnswers()[i]);
-                break;
-                }
-            }
-
-        // получение правильного ответа
-        rightAnswerTextFieldId.setText(String.valueOf(question.getResult()));
-    }
-
-    private void readerFromForm(){
-        Questions question = list.get(counter);
-        String [] array = new String[6];
-        question.setNumber(questionNumberTextFieldId.getText());
-        for(int i = 0; i < array.length; i++){
-            array[i] = textAreas[i].getText() != null ? textAreas[i].getText() : "";
-        }
-        question.setAnswers(array);
-        question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));
     }
 }
 

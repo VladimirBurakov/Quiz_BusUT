@@ -12,6 +12,12 @@ public class Questions {
         this.result = result;
         this.number = number;
     }
+    public Questions(){
+        this.question = "";
+        this.answers = null;
+        this.result = 0;
+        this.number = "";
+    }
 
     public String getQuestion() {
         return question;
