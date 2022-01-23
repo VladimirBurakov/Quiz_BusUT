@@ -1,0 +1,37 @@
+
+.button{
+    -fx-base: accent-color;
+    -fx-border-color: derive(accent-color, -20%);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1;
+    -fx-opacity: 1.0;
+    -fx-text-fill: navy;
+}
+
+.button:hover{
+    -fx-background-color: derive(accent-color, -30%);
+    -fx-border-color: derive(accent-color, -50%);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1;
+    -fx-text-fill: yellow;
+}
+.button:pressed{
+    -fx-background-color: derive(accent-color, -60%);
+    -fx-border-color: derive(accent-color, -80%);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1;
+    -fx-translate-x: -3;
+    -fx-translate-y: 3;
+    -fx-border-style: dashed;
+    -fx-text-fill: aliceblue;
+}
+
+
+
+

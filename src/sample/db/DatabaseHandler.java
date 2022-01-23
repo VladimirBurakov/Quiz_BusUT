@@ -6,21 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DatabaseHandler  extends Configs{
+public class DatabaseHandler  extends AbstractDataBaseHandler{
 
-    private static Connection dbConnection;
-
-    private Connection getDbConnection() throws SQLException, ClassNotFoundException {
-        if(dbConnection == null){
-            String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
-            return dbConnection;
-        }else{
-            return dbConnection;
-        }
-    }
     public void saveName(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String registrationDate = simpleDateFormat.format(new Date());

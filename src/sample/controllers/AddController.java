@@ -168,7 +168,7 @@ public class AddController extends AbstractDataController {
         Questions question = new Questions();
         question.setNumber(questionNumberTextFieldId.getText());
         question.setQuestion(questionTextAreaId.getText());
-        String [] array = new String[6];
+        String [] array = new String[question.getAnswers().length];
         for(int i = 0; i < array.length; i++){
             array[i] = textAreas[i].getText();
         }

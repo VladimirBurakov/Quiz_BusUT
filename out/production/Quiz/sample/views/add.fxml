@@ -52,7 +52,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
-            <Button id="undisabledButton" fx:id="addButtonId" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#writeInfo" prefWidth="110.0" text="Добавить" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Button id="undisabledButton" fx:id="addButtonId" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#save" prefWidth="110.0" text="Добавить" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

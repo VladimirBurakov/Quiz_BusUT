@@ -1,4 +1,4 @@
-package sample.controllers;
+package sample.globalconstants;
 
 public class FileConst {
     public final static String JSON_FILE = "D:\\java_projects\\Quiz\\src\\sample\\dao\\JSON_BAS_UT_Base.json";

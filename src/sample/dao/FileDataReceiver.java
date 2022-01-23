@@ -35,7 +35,7 @@ public class FileDataReceiver implements DataReceiver{
         return list;
     };
 
-    @Override
+    
      public String getData(){
         String result = "";
         try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\java_projects\\Quiz\\src\\sample\\dao\\BAS_UT_Base.csv"), StandardCharsets.UTF_8))) {

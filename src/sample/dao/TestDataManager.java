@@ -11,9 +11,13 @@ public class TestDataManager {
     private static DataReceiver dataReceiver;
 
     private static ArrayList<Questions> list;
+
+    //chose receiver
+    //выбор из чего получать, файл, json, MySql
     static
     {
-        dataReceiver = new JsonFileDataReceiver();
+        //dataReceiver = new FileDataReceiver();
+        dataReceiver = new MySQLDataReceiver();
         list = dataReceiver.getQuestions();
     }
 
@@ -37,7 +41,7 @@ public class TestDataManager {
         return currentUser;
     }
 
-    //выбор из чего получать, файл, json, MySql
+
    /* public static void setDataReceiver(DataReceiver dataReceiver) {
         TestDataManager.dataReceiver = dataReceiver;
     }*/

@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import sample.globalconstants.FileConst;
 
 public class JsonFileDataReceiver implements DataReceiver{
     private String data;
@@ -23,25 +24,26 @@ public class JsonFileDataReceiver implements DataReceiver{
         JSONArray jsonArray = new JSONArray(data);
 
         for(int i = 0; i < jsonArray.length(); i++){
-            String [] answers = new String[6];
+            int arrayLength = jsonArray.getJSONObject(i).getJSONArray("answers").length();
+            String [] answers = new String[arrayLength];
             question = jsonArray.getJSONObject(i).getString("question");
             number = jsonArray.getJSONObject(i).getString("number");
             result = jsonArray.getJSONObject(i).getInt("result");
             JSONArray innerJsonArray = jsonArray.getJSONObject(i).getJSONArray("answers");
 
             for(int j = 0; j < innerJsonArray.length(); j++){
-                 answers[j] = innerJsonArray.getString(j);
+                answers[j] = innerJsonArray.getString(j);
             }
             list.add(new Questions(question, answers, result, number));
         }
         return list;
     };
 
-    @Override
+
     public String getData(){
         String result = "";
         try {
-            result = new String(Files.readAllBytes(Paths.get("D://java_projects//Quiz//src//sample//dao//JSON_BAS_UT_Base.json")), StandardCharsets.UTF_8);
+            result = new String(Files.readAllBytes(Paths.get(FileConst.JSON_FILE)), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
