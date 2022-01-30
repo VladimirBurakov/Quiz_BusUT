@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import sample.dao.User;
-import sample.db.DatabaseHandler;
+import sample.db.UsersDatabaseHandler;
 
 public class StatController {
 
@@ -57,7 +57,7 @@ public class StatController {
     private void setQuery(){
         String centerStyle = "-fx-alignment: CENTER;";
 
-        DatabaseHandler dbHandler = new DatabaseHandler();
+        UsersDatabaseHandler dbHandler = new UsersDatabaseHandler();
         ArrayList<User> users = dbHandler.getStat();
         ObservableList<User> observableList = FXCollections.observableList(users);
 

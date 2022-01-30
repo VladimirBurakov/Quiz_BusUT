@@ -89,7 +89,7 @@ public class RemoveController extends AbstractDataController{
 
     @FXML
     void save(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
-        saveTo();
+        saveTo(SaveType.REMOVE);
         counter--;
         setData(list.get(counter));
     }

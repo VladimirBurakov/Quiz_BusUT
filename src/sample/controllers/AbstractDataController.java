@@ -4,6 +4,7 @@ import javafx.scene.control.TextArea;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import sample.dao.*;
+import sample.db.TestsDatabaseHandler;
 import sample.globalconstants.FileConst;
 
 import java.io.BufferedWriter;
@@ -19,6 +20,7 @@ public abstract class AbstractDataController {
     int counter = 0;
     ArrayList<Questions> list;
     TextArea[] textAreas;
+    private TestsDatabaseHandler testsDatabaseHandler = new TestsDatabaseHandler();
 
     private void saveToJSONFile() {
         readerFromForm();
@@ -72,10 +74,26 @@ public abstract class AbstractDataController {
             e.printStackTrace();
         }
     }
-    void saveTo(){
+
+    private void saveToMySQL(SaveType type) {
+        if(type == SaveType.ADD){
+            readerFromForm();
+            testsDatabaseHandler.addToMySQL(list.get(counter));
+        }else if(type == SaveType.EDIT){
+            readerFromForm();
+            testsDatabaseHandler.editToMySQL(list.get(counter));
+        }else if(type == SaveType.REMOVE){
+            testsDatabaseHandler.removeToMySQL(list.get(counter));
+            readerFromForm();
+        }else if(type == SaveType.REPLACE_ALL){
+            testsDatabaseHandler.replaceAllToMySQL(list);
+        }
+    }
+
+    //для тестирования и перегонки данных в нужный файл, после заменить на TestDataManager.getDataReceiver().
+    void saveTo(SaveType type){
         if(TestDataManager.getDataReceiver() instanceof MySQLDataReceiver){
-            //реализовать
-             //saveToMySQL();
+            saveToMySQL(type);
             System.out.println("");
         }else if(TestDataManager.getDataReceiver() instanceof JsonFileDataReceiver){
             saveToJSONFile();

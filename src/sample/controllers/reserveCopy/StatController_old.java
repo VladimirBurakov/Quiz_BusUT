@@ -3,7 +3,7 @@ package sample.controllers.reserveCopy;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import sample.dao.User;
-import sample.db.DatabaseHandler;
+import sample.db.UsersDatabaseHandler;
 
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -105,7 +105,7 @@ public class StatController_old {
     // рефлексия и даункаст
 
     private void setQuery(){
-        DatabaseHandler dbHandler = new DatabaseHandler();
+        UsersDatabaseHandler dbHandler = new UsersDatabaseHandler();
         ArrayList<User> users = dbHandler.getStat();
         for(int i = 0; i < users.size(); i++) {
             User user = users.get(i);

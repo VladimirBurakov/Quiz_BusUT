@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.dao.TestDataManager;
 import sample.dao.User;
-import sample.db.DatabaseHandler;
+import sample.db.UsersDatabaseHandler;
 
 public class ResultBoxController {
 
@@ -29,7 +29,7 @@ public class ResultBoxController {
 
     @FXML
     void initialize() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
+        UsersDatabaseHandler dbHandler = new UsersDatabaseHandler();
         User user = TestDataManager.getCurrentUser();
         user.setRightAnswersAmount(TestDataManager.getScore());
         dbHandler.saveResult(user); //сохрание результата теста

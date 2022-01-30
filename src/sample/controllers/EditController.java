@@ -133,7 +133,7 @@ public class EditController extends AbstractDataController {
 
     @FXML
     void save(ActionEvent event) {
-        saveTo();
+        saveTo(SaveType.EDIT);
     }
 
     @FXML

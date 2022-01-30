@@ -26,20 +26,20 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="90af52fa-c19a-4868-b387-b1a09a373b29">
-        <schema name="quiz" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
+        <schema name="information_schema" object-types="table, view" />
+        <schema name="quiz" object-types="table, view" />
         <schema name="sys" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
-      <console name="Quiz" type="STANDARD" schema="quiz" session="Main"><![CDATA[set global time_zone = '+2:00';]]></console>
+      <console name="Quiz" type="STANDARD" schema="quiz" session="Main">select * from answers;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="schemas/quiz/tables/quizinfo" />
-      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="schemas/quiz/tables/testinfoanswers" />
+      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="consoles/Quiz" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -546,7 +546,7 @@
       <regional-settings>
         <date-format value="MEDIUM" />
         <number-format value="UNGROUPED" />
-        <locale value="SYSTEM_DEFAULT" />
+        <locale value="ru_UA" />
         <use-custom-formats value="false" />
       </regional-settings>
       <environment>

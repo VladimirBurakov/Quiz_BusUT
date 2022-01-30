@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.dao.TestDataManager;
 import sample.dao.User;
-import sample.db.DatabaseHandler;
+import sample.db.UsersDatabaseHandler;
 import sample.helper.FXMLHelper;
 
 public class RegistrationController {
@@ -40,7 +40,7 @@ public class RegistrationController {
     }
 
     private void signUpNewUser(){
-        DatabaseHandler dbHandler = new DatabaseHandler();
+        UsersDatabaseHandler dbHandler = new UsersDatabaseHandler();
         registrationButton.setOnAction(event -> {
             String firstName = firstNameTextArea.getText().trim();
             String lastName = secondNameTextArea.getText().trim();

@@ -168,13 +168,14 @@ public class AddController extends AbstractDataController {
         Questions question = new Questions();
         question.setNumber(questionNumberTextFieldId.getText());
         question.setQuestion(questionTextAreaId.getText());
-        String [] array = new String[question.getAnswers().length];
-        for(int i = 0; i < array.length; i++){
+        String [] array = new String[textAreas.length];
+        for(int i = 0; i < textAreas.length; i++){
             array[i] = textAreas[i].getText();
         }
         question.setAnswers(array);
         question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));
         list.add(question);
+        counter = list.size() - 1;
     }
 
     @Override
@@ -190,7 +191,7 @@ public class AddController extends AbstractDataController {
 
     @FXML
     void save(ActionEvent event){
-        saveTo();
+        saveTo(SaveType.ADD);
         setInitialValue();
     }
 }

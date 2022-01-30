@@ -6,14 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DatabaseHandler  extends AbstractDataBaseHandler{
+public class UsersDatabaseHandler extends AbstractDataBaseHandler{
 
     public void saveName(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String registrationDate = simpleDateFormat.format(new Date());
-        String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.USER_FIRSTNAME + ", "
-                    + Const.USER_LASTNAME + ", " + Const.USER_CURRENT_DATE + ", "
-                    + Const.USER_QUESTIONS_AMOUHT + ", " + Const.USER_RIGHT_ANSWERS_AMOUNT + ")"
+        String insert = "INSERT INTO " + UserConst.USER_TABLE + "(" + UserConst.USER_FIRSTNAME + ", "
+                    + UserConst.USER_LASTNAME + ", " + UserConst.USER_CURRENT_DATE + ", "
+                    + UserConst.USER_QUESTIONS_AMOUHT + ", " + UserConst.USER_RIGHT_ANSWERS_AMOUNT + ")"
                     + "VALUES(?, ?, ?, ?, ?)";
 
         PreparedStatement prSt = null;
@@ -32,8 +32,8 @@ public class DatabaseHandler  extends AbstractDataBaseHandler{
     }
 
     public void saveResult(User user){
-        String insert = "UPDATE " + Const.USER_TABLE + " SET " + Const.USER_RIGHT_ANSWERS_AMOUNT + " = ? WHERE " + Const.USER_ID +
-                " = (SELECT MAX(" + Const.USER_ID +") FROM (SELECT * FROM " + Const.USER_TABLE + ") AS t)";
+        String insert = "UPDATE " + UserConst.USER_TABLE + " SET " + UserConst.USER_RIGHT_ANSWERS_AMOUNT + " = ? WHERE " + UserConst.USER_ID +
+                " = (SELECT MAX(" + UserConst.USER_ID +") FROM (SELECT * FROM " + UserConst.USER_TABLE + ") AS t)";
 
         PreparedStatement prSt = null;
         try {
@@ -46,19 +46,19 @@ public class DatabaseHandler  extends AbstractDataBaseHandler{
     }
     public ArrayList<User> getStat(){
         ArrayList<User> users = new ArrayList<>();
-        String query = "SELECT " + Const.USER_FIRSTNAME + ", " + Const.USER_LASTNAME + ", " + Const.USER_CURRENT_DATE + ", " +
-                Const.USER_QUESTIONS_AMOUHT + ", " + Const.USER_RIGHT_ANSWERS_AMOUNT + " FROM " + Const.USER_TABLE +
-                " ORDER BY " + Const.USER_CURRENT_DATE + " DESC LIMIT 10";
+        String query = "SELECT " + UserConst.USER_FIRSTNAME + ", " + UserConst.USER_LASTNAME + ", " + UserConst.USER_CURRENT_DATE + ", " +
+                UserConst.USER_QUESTIONS_AMOUHT + ", " + UserConst.USER_RIGHT_ANSWERS_AMOUNT + " FROM " + UserConst.USER_TABLE +
+                " ORDER BY " + UserConst.USER_CURRENT_DATE + " DESC LIMIT 10";
         Statement statement = null;
         try {
             statement = this.getDbConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()){
-                String name = resultSet.getString(Const.USER_FIRSTNAME);
-                String lastName = resultSet.getString(Const.USER_LASTNAME);
-                String dataTime = resultSet.getString(Const.USER_CURRENT_DATE);
-                int amount = resultSet.getInt(Const.USER_QUESTIONS_AMOUHT);
-                int answerAmount = resultSet.getInt(Const.USER_RIGHT_ANSWERS_AMOUNT);
+                String name = resultSet.getString(UserConst.USER_FIRSTNAME);
+                String lastName = resultSet.getString(UserConst.USER_LASTNAME);
+                String dataTime = resultSet.getString(UserConst.USER_CURRENT_DATE);
+                int amount = resultSet.getInt(UserConst.USER_QUESTIONS_AMOUHT);
+                int answerAmount = resultSet.getInt(UserConst.USER_RIGHT_ANSWERS_AMOUNT);
                 User user = new User(name, lastName, dataTime, amount, answerAmount);
                 users.add(user);
             }

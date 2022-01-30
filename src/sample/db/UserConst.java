@@ -1,6 +1,6 @@
 package sample.db;
 
-public class Const {
+public class UserConst {
     public static final String USER_TABLE = "users";
     public static final String USER_ID = "idusers";
     public static final String USER_FIRSTNAME = "firstname";

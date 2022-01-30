@@ -1,17 +1,17 @@
 package sample.dao;
 
-import sample.db.TestInfoDatabaseHandler;
+import sample.db.TestsDatabaseHandler;
 
 import java.util.ArrayList;
 
 public class MySQLDataReceiver implements DataReceiver{
-    private TestInfoDatabaseHandler testInfoDatabaseHandler;
+    private TestsDatabaseHandler testsDatabaseHandler;
     MySQLDataReceiver(){
-        testInfoDatabaseHandler = new TestInfoDatabaseHandler();
+        testsDatabaseHandler = new TestsDatabaseHandler();
     }
     @Override
     public ArrayList<Questions> getQuestions() {
-        return  testInfoDatabaseHandler.getDataBaseQuestions();
+        return  testsDatabaseHandler.getDataBaseQuestions();
     }
 
 }
