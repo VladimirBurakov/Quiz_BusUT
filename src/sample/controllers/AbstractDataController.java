@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import sample.dao.*;
 import sample.db.TestsDatabaseHandler;
 import sample.globalconstants.FileConst;
+import sample.services.CurrentUserDataSaver;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -90,16 +91,15 @@ public abstract class AbstractDataController {
         }
     }
 
-    //для тестирования и перегонки данных в нужный файл, после заменить на TestDataManager.getDataReceiver().
+    //для тестирования и перегонки данных в нужный файл, после заменить на TestDataManager.getDataReceiver().           !!!!!!!!!!!!!!!
     void saveTo(SaveType type){
-        if(TestDataManager.getDataReceiver() instanceof MySQLDataReceiver){
+        if(CurrentUserDataSaver.getDataReceiver() instanceof MySQLDataReceiver){
             saveToMySQL(type);
-            System.out.println("");
-        }else if(TestDataManager.getDataReceiver() instanceof JsonFileDataReceiver){
+        }else if(CurrentUserDataSaver.getDataReceiver() instanceof JsonFileDataReceiver){
             saveToJSONFile();
+            //saveToMySQL(SaveType.REPLACE_ALL);
         }else{
             saveToFile();
-            //saveToJSONFile();
         }
     }
 

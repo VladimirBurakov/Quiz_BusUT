@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MySQLDataReceiver implements DataReceiver{
     private TestsDatabaseHandler testsDatabaseHandler;
-    MySQLDataReceiver(){
+    public MySQLDataReceiver(){
         testsDatabaseHandler = new TestsDatabaseHandler();
     }
     @Override

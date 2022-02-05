@@ -1,4 +1,4 @@
-package sample.helper;
+package sample.services;
 
 public class CheckHelper {
     public static boolean isRealDigit(String number){

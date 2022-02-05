@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import sample.helper.FXMLHelper;
+import sample.services.FXMLHelper;
 
 public class MessageBoxController {
 

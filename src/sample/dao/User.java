@@ -18,6 +18,9 @@ public class User {
     public User(String firstName, String lastName, int questionsAmount, int rightAnswersAmount) {
         this(firstName, lastName, "", questionsAmount, rightAnswersAmount);
     }
+    public User(String firstName, String lastName){
+        this(firstName, lastName, "", 0, 0);
+    }
 
     public String getDataTime() {
         return dataTime;

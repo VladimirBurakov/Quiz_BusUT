@@ -34,16 +34,24 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
-      <console name="Quiz" type="STANDARD" schema="quiz" session="Main">select * from answers;</console>
+      <console name="Quiz" type="STANDARD" schema="quiz" session="Session 1"><![CDATA[select
+    q.id,
+    q.qnumber,
+    q.question,
+    q.result
+from
+    quiz q;
+
+select * from quiz;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="consoles/Quiz" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="90af52fa-c19a-4868-b387-b1a09a373b29" />
+    <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
+      <session name="Session 1" id="b630139c-7fc4-45e2-8d21-1702cb8f1ef0" />
+    </connection>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="sys.sys_config" active-filter-id="e8d01cc8-51a3-4750-a473-b43c43c65acf">

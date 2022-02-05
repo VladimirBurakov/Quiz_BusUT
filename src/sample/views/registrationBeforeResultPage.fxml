@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="250.0" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegistrationBeforeResultController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="482.0" text="Регистрация пользователя" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <GridPane layoutX="-8.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints maxWidth="-Infinity" prefWidth="120.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="registrationButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registration" text="Регистрация" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <tooltip>
+                  <Tooltip text="Зарегистрироваться для статистики своих данных" />
+               </tooltip>
+                </Button>
+                <Label alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" text="Введите имя и фамилию" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </Label>
+                <TextField fx:id="firstNameTextArea" alignment="CENTER_RIGHT" maxWidth="30.0" minWidth="100.0" prefWidth="30.0" promptText="Иван" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </TextField>
+            <TextField fx:id="secondNameTextArea" alignment="CENTER_RIGHT" layoutX="210.0" layoutY="58.0" maxWidth="30.0" minWidth="100.0" prefWidth="30.0" promptText="Иванов" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            </children>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+        </GridPane>
+    </children>
+</AnchorPane>

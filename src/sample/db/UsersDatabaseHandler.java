@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class UsersDatabaseHandler extends AbstractDataBaseHandler{
 
-    public void saveName(User user){
+    public void saveUser(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String registrationDate = simpleDateFormat.format(new Date());
         String insert = "INSERT INTO " + UserConst.USER_TABLE + "(" + UserConst.USER_FIRSTNAME + ", "
@@ -31,7 +31,7 @@ public class UsersDatabaseHandler extends AbstractDataBaseHandler{
 
     }
 
-    public void saveResult(User user){
+    /*public void saveResult(User user){
         String insert = "UPDATE " + UserConst.USER_TABLE + " SET " + UserConst.USER_RIGHT_ANSWERS_AMOUNT + " = ? WHERE " + UserConst.USER_ID +
                 " = (SELECT MAX(" + UserConst.USER_ID +") FROM (SELECT * FROM " + UserConst.USER_TABLE + ") AS t)";
 
@@ -43,7 +43,7 @@ public class UsersDatabaseHandler extends AbstractDataBaseHandler{
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     public ArrayList<User> getStat(){
         ArrayList<User> users = new ArrayList<>();
         String query = "SELECT " + UserConst.USER_FIRSTNAME + ", " + UserConst.USER_LASTNAME + ", " + UserConst.USER_CURRENT_DATE + ", " +

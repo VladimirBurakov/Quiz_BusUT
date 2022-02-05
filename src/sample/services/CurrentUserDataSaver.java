@@ -1,28 +1,27 @@
-package sample.dao;
+package sample.services;
+
+import sample.dao.DataReceiver;
+import sample.dao.MySQLDataReceiver;
+import sample.dao.Questions;
+import sample.dao.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class TestDataManager {
-    //счет
-
-    private static int score = 0;
+public class CurrentUserDataSaver {
 
     private static DataReceiver dataReceiver;
 
     private static ArrayList<Questions> list;
 
     //chose receiver
-    //выбор из чего получать, файл, json, MySql
+    //выбор из чего получать, файл, json, MySql                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     static
     {
-        //dataReceiver = new FileDataReceiver();
+        //dataReceiver = new JsonFileDataReceiver();
         dataReceiver = new MySQLDataReceiver();
         list = dataReceiver.getQuestions();
     }
-
-    //количество вопросов при запуске приложения выбор от 5 до 50
-    private static int questionQuantity = 0;
 
     //Данные пользователя имя, фамилия, дата, кол-во вопросов, кол-во правильных ответов
     private static User currentUser;
@@ -31,41 +30,24 @@ public class TestDataManager {
     public static DataReceiver getDataReceiver() {
         return dataReceiver;
     }
-    public static int getScore() {
-        return score;
-    }
-    public static int getQuestionQuantity() {
-        return questionQuantity;
-    }
+
     public static User getCurrentUser() {
         return currentUser;
     }
 
-
-   /* public static void setDataReceiver(DataReceiver dataReceiver) {
-        TestDataManager.dataReceiver = dataReceiver;
-    }*/
-    public static void setQuestionQuantity(int questionQuantity) {
-        TestDataManager.questionQuantity = questionQuantity;
-    }
-    public static void setScore(int score) {
-
-        TestDataManager.score = score;
-    }
     public static void setCurrentUser(User currentUser) {
-        TestDataManager.currentUser = currentUser;
+        CurrentUserDataSaver.currentUser = currentUser;
     }
     public static ArrayList<Questions> getList() {
         return list;
     }
-
 
     //возращение урезанного массива до questionQuantity
     public static ArrayList<Questions> getCurrentTestArray(){
         //перемашать список вопросов
         Collections.shuffle(list);
         ArrayList<Questions> currentList = new ArrayList<>();
-        for(int i = 0; i < questionQuantity; i++){
+        for(int i = 0; i < currentUser.getQuestionsAmount(); i++){
             currentList.add(list.get(i));
         }
         return currentList;

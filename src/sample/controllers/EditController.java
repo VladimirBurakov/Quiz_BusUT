@@ -1,13 +1,5 @@
 package sample.controllers;
-import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -22,11 +14,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import sample.Main;
 import sample.dao.*;
-import sample.helper.FXMLHelper;
+import sample.services.CurrentUserDataSaver;
+import sample.services.FXMLHelper;
 
 public class EditController extends AbstractDataController {
     @FXML
@@ -189,7 +179,7 @@ public class EditController extends AbstractDataController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = TestDataManager.getList();
+        list = CurrentUserDataSaver.getList();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {

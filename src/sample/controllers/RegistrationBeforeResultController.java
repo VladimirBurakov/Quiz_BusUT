@@ -1,18 +1,18 @@
 package sample.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.services.CurrentUserDataSaver;
 import sample.dao.User;
+import sample.services.CurrentUserDataSaver;
 import sample.services.FXMLHelper;
 
-public class RegistrationController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RegistrationBeforeResultController {
 
     @FXML
     private ResourceBundle resources;
@@ -22,9 +22,6 @@ public class RegistrationController {
 
     @FXML
     private TextField firstNameTextArea;
-
-    @FXML
-    private Button skipButton;
 
     @FXML
     private Button registrationButton;
@@ -38,32 +35,21 @@ public class RegistrationController {
         String firstName = firstNameTextArea.getText().trim();
         String lastName = secondNameTextArea.getText().trim();
         if(!firstName.isEmpty() && !lastName.isEmpty()){
-            User user = new User(firstName, lastName);
-            CurrentUserDataSaver.setCurrentUser(user);
+            User user = CurrentUserDataSaver.getCurrentUser();
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
             registrationButton.getScene().getWindow().hide();
-            stage = FXMLHelper.loadPage("/sample/views/startPage.fxml");
-            stage.setMinWidth(450);
-            stage.setMinHeight(350);
-            stage.setTitle("Старт теста");
+            stage = FXMLHelper.loadPage("/sample/views/resultPage.fxml");
+            stage.setMinWidth(300);
+            stage.setMinHeight(200);
+            stage.setTitle("Результат");
+
         }else{
             FXMLHelper.setMessage("Заполните поля!\n" +
                     "Это для вашего же блага,\n" +
                     "для анализа успешности прохождения.");
             FXMLHelper.loadPage("/sample/views/messageWindow.fxml");
         }
-    }
-
-    @FXML
-    void skipRegistration(ActionEvent event) {
-        String firstName = "";
-        String lastName = "";
-        User user = new User(firstName, lastName);
-        CurrentUserDataSaver.setCurrentUser(user);
-        skipButton.getScene().getWindow().hide();
-        stage = FXMLHelper.loadPage("/sample/views/startPage.fxml");
-        stage.setMinWidth(450);
-        stage.setMinHeight(350);
-        stage.setTitle("Старт теста");
     }
 
     @FXML

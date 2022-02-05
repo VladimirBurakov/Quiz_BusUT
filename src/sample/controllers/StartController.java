@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -13,13 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
-import sample.dao.FileDataReceiver;
-import sample.dao.JsonFileDataReceiver;
-import sample.dao.TestDataManager;
-import sample.helper.CheckHelper;
-import sample.helper.FXMLHelper;
+import sample.services.CurrentUserDataSaver;
+import sample.services.CheckHelper;
+import sample.services.FXMLHelper;
 
-public class Controller {
+public class StartController {
     @FXML
     private ResourceBundle resources;
 
@@ -58,9 +55,12 @@ public class Controller {
     void start(ActionEvent event) {
         String amountQuestion = amountQuestionTextArea.getText();
         if(CheckHelper.isRightRange(amountQuestion, 5, 50)){
-            TestDataManager.setQuestionQuantity(Integer.parseInt(amountQuestion));
+            CurrentUserDataSaver.getCurrentUser().setQuestionsAmount(Integer.parseInt(amountQuestion));
             startButton.getScene().getWindow().hide();
-            FXMLHelper.loadPage("/sample/views/registration.fxml");
+            stage = FXMLHelper.loadPage("/sample/views/testPage.fxml");
+            stage.setMinWidth(660);
+            stage.setMinHeight(550);
+            stage.setTitle("Test");
         }
     }
 
@@ -74,7 +74,7 @@ public class Controller {
 
     @FXML
     void add(ActionEvent event) {
-        stage = FXMLHelper.loadPage("/sample/views/add.fxml");
+        stage = FXMLHelper.loadPage("/sample/views/addPage.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
         //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
@@ -83,7 +83,7 @@ public class Controller {
 
     @FXML
     void edit(ActionEvent event) {
-        stage = FXMLHelper.loadPage("/sample/views/edit.fxml");
+        stage = FXMLHelper.loadPage("/sample/views/editPage.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
         //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
@@ -92,7 +92,7 @@ public class Controller {
 
     @FXML
     void remove(ActionEvent event) {
-        stage = FXMLHelper.loadPage("/sample/views/remove.fxml");
+        stage = FXMLHelper.loadPage("/sample/views/removePage.fxml");
         stage.setMinWidth(660);
         stage.setMinHeight(550);
         //stage.getScene().getStylesheets().add("sample/stylesheets/add-edit-remove.css");
@@ -101,8 +101,9 @@ public class Controller {
     @FXML
     void stat(ActionEvent event) {
         stage = FXMLHelper.loadPage("/sample/views/statPage.fxml");
-        stage.setMinWidth(440);
-        stage.setMinHeight(330);
+        stage.setMinWidth(450);
+        stage.setMinHeight(350);
+        stage.setTitle("Статистика");
     }
 
     @FXML

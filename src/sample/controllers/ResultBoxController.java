@@ -2,13 +2,16 @@ package sample.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import sample.dao.TestDataManager;
+import sample.services.CurrentUserDataSaver;
 import sample.dao.User;
 import sample.db.UsersDatabaseHandler;
+import sample.services.FXMLHelper;
 
 public class ResultBoxController {
 
@@ -19,28 +22,32 @@ public class ResultBoxController {
     private URL location;
 
     @FXML
-    private Button okButton;
+    private Button okId;
 
     @FXML
     private Label messageLabel;
 
     @FXML
     private Label resultLabel;
+    private Stage stage;
 
     @FXML
     void initialize() {
         UsersDatabaseHandler dbHandler = new UsersDatabaseHandler();
-        User user = TestDataManager.getCurrentUser();
-        user.setRightAnswersAmount(TestDataManager.getScore());
-        dbHandler.saveResult(user); //сохрание результата теста
+        User currentUser = CurrentUserDataSaver.getCurrentUser();
+        dbHandler.saveUser(currentUser); //сохрание результата теста
 
         this.messageLabel.setText("Ваш результат:");
-        String result = TestDataManager.getScore() + " из " + TestDataManager.getQuestionQuantity();
+        String result = currentUser.getQuestionsAmount() + " из " + currentUser.getRightAnswersAmount();
         resultLabel.setText(result);
-        okButton.setOnAction(event -> {
-            Stage stage = (Stage) okButton.getScene().getWindow();
-            stage.close();
-        });
     }
 
+    @FXML
+   void toStat(ActionEvent event){
+        okId.getScene().getWindow().hide();
+        stage = FXMLHelper.loadPage("/sample/views/statPage.fxml");
+        stage.setMinWidth(450);
+        stage.setMinHeight(350);
+        stage.setTitle("Статистка");
+    }
 }

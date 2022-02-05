@@ -10,10 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import sample.Main;
-import sample.dao.TestDataManager;
+import javafx.stage.Stage;
+import sample.dao.User;
+import sample.services.CurrentUserDataSaver;
 import sample.dao.Questions;
-import sample.helper.FXMLHelper;
+import sample.services.FXMLHelper;
 
 public class TestController {
 
@@ -78,12 +79,14 @@ public class TestController {
     private int counter = 0;
     private ArrayList<Questions> list;
     private RadioButton selection;
+    private User currentUser = CurrentUserDataSaver.getCurrentUser();
+    private Stage stage;
 
     @FXML
     void initialize() {
         //получение текущего массива с ограниченным числом вопросов
-        list = TestDataManager.getCurrentTestArray();
-        intAllAmountAnswerLabel.setText("" + TestDataManager.getQuestionQuantity());
+        list = CurrentUserDataSaver.getCurrentTestArray();
+        intAllAmountAnswerLabel.setText("" + currentUser.getQuestionsAmount());
         intAmountAnswerLabel.setText(" "+ counter);
         Questions question = list.get(counter);
         takeTest(question);
@@ -123,7 +126,7 @@ public class TestController {
                 int myAnswer = Integer.parseInt(selection.getText());
                 //сравнение с результатом, если результат не верный вывод правильного ответа.
                 if (myAnswer == question.getResult()) {
-                    TestDataManager.setScore(TestDataManager.getScore() + 1);
+                    currentUser.setRightAnswersAmount(currentUser.getRightAnswersAmount() + 1);
                     currentAnswerNumberLabel.setText(String.valueOf("Верный ответ: " + question.getResult()) + "\nПоздравляем ваш ответ верный! :-)))\n");
                 } else {
                     currentAnswerNumberLabel.setText("Вернный отвер: " + question.getResult() + "\nВаш ответ неверный! :-(((\n");
@@ -143,9 +146,19 @@ public class TestController {
             if(selection != null){
                 counter++;
                 // Окончание и запуск результата !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                if(counter >= TestDataManager.getQuestionQuantity()){
+                if(counter >= currentUser.getQuestionsAmount()){
                     nextButton.getScene().getWindow().hide();
-                    FXMLHelper.loadPage("/sample/views/result.fxml");
+                    if(!currentUser.getFirstName().isEmpty() || !currentUser.getLastName().isEmpty()){
+                        stage = FXMLHelper.loadPage("/sample/views/resultPage.fxml");
+                        stage.setMinWidth(300);
+                        stage.setMinHeight(200);
+                        stage.setTitle("Результат");
+                    }else{
+                        stage = FXMLHelper.loadPage("/sample/views/registrationBeforeResultPage.fxml");
+                        stage.setMinWidth(300);
+                        stage.setMinHeight(250);
+                        stage.setTitle("Регистрация");
+                    }
                 }else{
                     takeTest(list.get(counter));
                     checkAnswer(list.get(counter));

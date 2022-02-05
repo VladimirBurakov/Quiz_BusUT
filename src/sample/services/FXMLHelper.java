@@ -1,4 +1,4 @@
-package sample.helper;
+package sample.services;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,8 +23,8 @@ public class FXMLHelper {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setMinHeight(130);
-        stage.setMinWidth(200);
+        stage.setMinHeight(150);
+        stage.setMinWidth(250);
         stage.getScene().getStylesheets().add(FXMLHelper.class.getResource("/sample/stylesheets/global.css").toExternalForm());
         stage.show();
         return stage;

@@ -3,7 +3,6 @@ package sample.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,19 +12,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.dao.FileDataReceiver;
 import sample.dao.Questions;
-import sample.dao.TestDataManager;
-import sample.helper.FXMLHelper;
+import sample.services.CurrentUserDataSaver;
+import sample.services.FXMLHelper;
 
-import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class RemoveController extends AbstractDataController{
@@ -147,7 +138,7 @@ public class RemoveController extends AbstractDataController{
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = TestDataManager.getList();
+        list = CurrentUserDataSaver.getList();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
