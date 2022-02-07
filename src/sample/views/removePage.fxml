@@ -164,7 +164,7 @@
                   <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextArea>
-            <Button fx:id="removeButtonId" defaultButton="true" layoutX="130.0" layoutY="423.0" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#save" prefWidth="100.0" text="Удалить" GridPane.halignment="LEFT" GridPane.rowIndex="10">
+            <Button fx:id="removeButtonId" defaultButton="true" layoutX="130.0" layoutY="423.0" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#remove" prefWidth="100.0" text="Удалить" GridPane.halignment="LEFT" GridPane.rowIndex="10">
                <font>
                   <Font size="18.0" />
                </font>
@@ -225,7 +225,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="questionNumberBigTextFieldId" layoutX="100.0" layoutY="59.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+            <TextField fx:id="questionNumberBigTextFieldId" layoutX="100.0" layoutY="59.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" promptText="1.25" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                <font>
                   <Font size="18.0" />
                </font>
@@ -240,6 +240,9 @@
                <GridPane.margin>
                   <Insets right="85.0" />
                </GridPane.margin>
+               <tooltip>
+                  <Tooltip text="Поиск по номеру вопроса" />
+               </tooltip>
             </Button>
          </children>
          <cursor>

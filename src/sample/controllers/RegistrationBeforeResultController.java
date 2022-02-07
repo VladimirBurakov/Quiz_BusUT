@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.dao.User;
+import sample.dao.model.User;
 import sample.services.CurrentUserDataSaver;
 import sample.services.FXMLHelper;
 
@@ -28,7 +28,6 @@ public class RegistrationBeforeResultController {
 
     @FXML
     private TextField secondNameTextArea;
-    private Stage stage;
 
     @FXML
     void registration(ActionEvent event) {
@@ -39,7 +38,7 @@ public class RegistrationBeforeResultController {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             registrationButton.getScene().getWindow().hide();
-            stage = FXMLHelper.loadPage("/sample/views/resultPage.fxml");
+            Stage stage = FXMLHelper.loadPage("/sample/views/resultPage.fxml");
             stage.setMinWidth(300);
             stage.setMinHeight(200);
             stage.setTitle("Результат");

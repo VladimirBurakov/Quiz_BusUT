@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-abstract class AbstractDataBaseHandler extends Configs{
+abstract class AbstractDatabase extends Configs{
     private static Connection dbConnection;
 
     Connection getDbConnection() throws SQLException, ClassNotFoundException {

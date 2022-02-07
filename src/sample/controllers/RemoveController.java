@@ -12,8 +12,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.dao.Questions;
-import sample.services.CurrentUserDataSaver;
+import sample.Main;
+import sample.dao.model.Questions;
 import sample.services.FXMLHelper;
 
 import java.net.URL;
@@ -79,13 +79,6 @@ public class RemoveController extends AbstractDataController{
     private TextArea questionTextAreaId;
 
     @FXML
-    void save(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
-        saveTo(SaveType.REMOVE);
-        counter--;
-        setData(list.get(counter));
-    }
-
-    @FXML
     void exitSettings(ActionEvent event) {
         Stage stage = (Stage) exitButtonId.getScene().getWindow();
         stage.close();
@@ -138,7 +131,7 @@ public class RemoveController extends AbstractDataController{
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = CurrentUserDataSaver.getList();
+        list = Main.getDataForTest().getList();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -167,15 +160,6 @@ public class RemoveController extends AbstractDataController{
     }
 
     void readerFromForm() {
-        /*Questions question = new Questions();
-        question.setNumber(questionNumberTextFieldId.getText());
-        question.setQuestion(questionTextAreaId.getText());
-        String [] array = new String[6];
-        for(int i = 0; i < array.length; i++){
-            array[i] = textAreas[i].getText();
-        }
-        question.setAnswers(array);
-        question.setResult(Integer.parseInt(rightAnswerTextFieldId.getText()));*/
         list.remove(counter);
     }
 
@@ -211,6 +195,14 @@ public class RemoveController extends AbstractDataController{
             }
         // получение правильного ответа
         rightAnswerTextFieldId.setText(String.valueOf(question.getResult()));
+    }
+
+    @FXML
+    void remove(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
+        dataHandler.remove(list, counter);
+        readerFromForm();
+        counter--;
+        setData(list.get(counter));
     }
 }
 

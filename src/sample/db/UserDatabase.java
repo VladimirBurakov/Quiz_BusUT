@@ -1,12 +1,12 @@
 package sample.db;
-import sample.dao.User;
+import sample.dao.model.User;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class UsersDatabaseHandler extends AbstractDataBaseHandler{
+public class UserDatabase extends AbstractDatabase {
 
     public void saveUser(User user){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

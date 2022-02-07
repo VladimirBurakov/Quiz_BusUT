@@ -1,4 +1,4 @@
-package sample.dao;
+package sample.dao.model;
 
 public class User {
     private String firstName;

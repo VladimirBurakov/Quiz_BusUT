@@ -1,14 +1,14 @@
 package sample.db;
 
-import sample.dao.Questions;
+import sample.dao.model.Questions;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestsDatabaseHandler extends AbstractDataBaseHandler{
+public class TestDatabase extends AbstractDatabase {
 
    //получение списка Question
-    public ArrayList<Questions> getDataBaseQuestions(){
+    public List<Questions> getDataBaseQuestions(){
         ArrayList<Questions> resultList = new ArrayList<>();
         Statement statement = null;
         String commonQuery = "SELECT " + TestConst.QUIZ_TABLE + "." + TestConst.QUIZ_ID + ", " + TestConst.QUIZ_QNUMBER + ", " +

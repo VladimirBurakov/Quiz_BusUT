@@ -6,8 +6,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import sample.dao.Questions;
-import sample.services.CurrentUserDataSaver;
+import sample.Main;
+import sample.dao.model.Questions;
 import sample.services.FXMLHelper;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,7 +57,7 @@ public class AddController extends AbstractDataController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = CurrentUserDataSaver.getList();
+        list = dataHandler.getQuestions();
         setInitialValue();
         fieldsBlockageController();
     }
@@ -190,8 +190,9 @@ public class AddController extends AbstractDataController {
     }
 
     @FXML
-    void save(ActionEvent event){
-        saveTo(SaveType.ADD);
+    void add(ActionEvent event){
+        readerFromForm();
+        dataHandler.add(list, counter);
         setInitialValue();
     }
 }

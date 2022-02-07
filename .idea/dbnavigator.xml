@@ -34,7 +34,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
-      <console name="Quiz" type="STANDARD" schema="quiz" session="Session 1"><![CDATA[select
+      <console name="Quiz" type="STANDARD" schema="quiz" session="Session 1">select
     q.id,
     q.qnumber,
     q.question,
@@ -42,7 +42,7 @@
 from
     quiz q;
 
-select * from quiz;]]></console>
+select * from quiz;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

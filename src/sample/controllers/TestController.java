@@ -2,6 +2,7 @@ package sample.controllers;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -11,9 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import sample.dao.User;
+import sample.Main;
+import sample.dao.model.User;
 import sample.services.CurrentUserDataSaver;
-import sample.dao.Questions;
+import sample.dao.model.Questions;
 import sample.services.FXMLHelper;
 
 public class TestController {
@@ -77,7 +79,7 @@ public class TestController {
     private Label currentAnswerNumberLabel;
 
     private int counter = 0;
-    private ArrayList<Questions> list;
+    private List<Questions> list;
     private RadioButton selection;
     private User currentUser = CurrentUserDataSaver.getCurrentUser();
     private Stage stage;
@@ -85,7 +87,7 @@ public class TestController {
     @FXML
     void initialize() {
         //получение текущего массива с ограниченным числом вопросов
-        list = CurrentUserDataSaver.getCurrentTestArray();
+        list = Main.getDataForTest().getCurrentTestArray();
         intAllAmountAnswerLabel.setText("" + currentUser.getQuestionsAmount());
         intAmountAnswerLabel.setText(" "+ counter);
         Questions question = list.get(counter);

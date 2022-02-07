@@ -14,8 +14,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.dao.*;
-import sample.services.CurrentUserDataSaver;
+import sample.Main;
+import sample.dao.model.Questions;
 import sample.services.FXMLHelper;
 
 public class EditController extends AbstractDataController {
@@ -122,11 +122,6 @@ public class EditController extends AbstractDataController {
     }
 
     @FXML
-    void save(ActionEvent event) {
-        saveTo(SaveType.EDIT);
-    }
-
-    @FXML
     void exitSettings(ActionEvent event) {
         Stage stage = (Stage) exitButtonId.getScene().getWindow();
         stage.close();
@@ -179,7 +174,7 @@ public class EditController extends AbstractDataController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = CurrentUserDataSaver.getList();
+        list = Main.getDataForTest().getList();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -201,6 +196,12 @@ public class EditController extends AbstractDataController {
             }
         });
 
+    }
+
+    @FXML
+    void edit(ActionEvent event) {
+         readerFromForm();
+        dataHandler.edit(list, counter);
     }
 }
 

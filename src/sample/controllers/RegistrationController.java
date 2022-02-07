@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.services.CurrentUserDataSaver;
-import sample.dao.User;
+import sample.dao.model.User;
 import sample.services.FXMLHelper;
 
 public class RegistrationController {
