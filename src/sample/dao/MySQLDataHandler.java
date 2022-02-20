@@ -2,14 +2,21 @@ package sample.dao;
 
 import sample.dao.model.Questions;
 import sample.db.TestDatabase;
+
+import java.io.IOException;
 import java.util.List;
 
 public class MySQLDataHandler implements DataHandler {
     private TestDatabase testDatabase = new TestDatabase();
 
     @Override
-    public List<Questions> getQuestions() {
+    public List<Questions> getAllData() {
         return  testDatabase.getDataBaseQuestions();
+    }
+
+    @Override
+    public List<Questions> getOnlyTestData() {
+        return null;
     }
 
     @Override
@@ -25,5 +32,10 @@ public class MySQLDataHandler implements DataHandler {
     @Override
     public void remove(List<Questions> list, int counter) {
         testDatabase.removeToMySQL(list.get(counter));
+    }
+
+    @Override
+    public void saveAllData(List<Questions> list, int counter) throws IOException {
+
     }
 }

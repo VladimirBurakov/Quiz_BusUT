@@ -9,22 +9,26 @@ import java.util.List;
 
 public class DataForTest {
     private DataHandler dataHandler;
-    private List<Questions> list;
+    //private List<Questions> list;
 
     public DataForTest(DataHandler dataHandler){
         this.dataHandler = dataHandler;
-        list = dataHandler.getQuestions();
+        //list = dataHandler.getAllData();
     }
 
     public DataHandler getDataHandler() {
         return dataHandler;
     }
-
-    public List<Questions> getList() {
-        return list;
+    public void setDataHandler(DataHandler dataHandler) {
+       this.dataHandler = dataHandler;
     }
 
-    public List<Questions> getCurrentTestArray(){
+    /*public List<Questions> getList() {
+        return list;
+    }*/
+
+    // после раализации метода ДатаХэндлер этот метод убрать.
+    /*public List<Questions> getCurrentTestArray(){
         User currentUser = CurrentUserDataSaver.getCurrentUser();
         Collections.shuffle(list);
         List<Questions> currentList = new ArrayList<>();
@@ -32,5 +36,5 @@ public class DataForTest {
             currentList.add(list.get(i));
         }
         return currentList;
-    }
+    }*/
 }

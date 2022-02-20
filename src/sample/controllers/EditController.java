@@ -1,4 +1,5 @@
 package sample.controllers;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -174,7 +175,7 @@ public class EditController extends AbstractDataController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = Main.getDataForTest().getList();
+        list = Main.getDataForTest().getDataHandler().getAllData();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -201,7 +202,11 @@ public class EditController extends AbstractDataController {
     @FXML
     void edit(ActionEvent event) {
          readerFromForm();
-        dataHandler.edit(list, counter);
+        try {
+            dataHandler.edit(list, counter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

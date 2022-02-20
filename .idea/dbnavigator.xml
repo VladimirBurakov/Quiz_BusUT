@@ -24,29 +24,22 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="90af52fa-c19a-4868-b387-b1a09a373b29">
-        <schema name="information_schema" object-types="table, view" />
-        <schema name="quiz" object-types="table, view" />
-        <schema name="sys" object-types="table, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
-      <console name="Quiz" type="STANDARD" schema="quiz" session="Session 1">select
-    q.id,
-    q.qnumber,
-    q.question,
-    q.result
+      <console name="Quiz" type="STANDARD" schema="quiz" session="Session 1"><![CDATA[select
+    a.answer,
+    a.id,
+    a.quizid
 from
-    quiz q;
-
-select * from quiz;</console>
+    answers a;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="consoles/Quiz" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">
@@ -54,12 +47,14 @@ select * from quiz;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="quiz.answers" active-filter-id="" />
     <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="sys.sys_config" active-filter-id="e8d01cc8-51a3-4750-a473-b43c43c65acf">
       <filter id="e8d01cc8-51a3-4750-a473-b43c43c65acf" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="variable" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
     <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="quiz.users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="quiz.quiz" active-filter-id="" />
     <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="quiz.testinfoanswers" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" dataset="quiz.quizinfo" active-filter-id="EMPTY_FILTER" />
   </component>

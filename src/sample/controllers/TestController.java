@@ -2,6 +2,7 @@ package sample.controllers;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -83,11 +84,16 @@ public class TestController {
     private RadioButton selection;
     private User currentUser = CurrentUserDataSaver.getCurrentUser();
     private Stage stage;
+    private List<Label> labelList = new ArrayList<>();
 
     @FXML
     void initialize() {
+        //заполнение списка полями ответов
+        Collections.addAll(labelList, firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel, fifthAnswerLabel, sixthAnswerLabel);
+
         //получение текущего массива с ограниченным числом вопросов
-        list = Main.getDataForTest().getCurrentTestArray();
+        //list = Main.getDataForTest().getCurrentTestArray();               //старый вариант, еще работает     // удалить когда будут создан в других DataHandler
+        list = Main.getDataForTest().getDataHandler().getOnlyTestData();
         intAllAmountAnswerLabel.setText("" + currentUser.getQuestionsAmount());
         intAmountAnswerLabel.setText(" "+ counter);
         Questions question = list.get(counter);
@@ -97,9 +103,10 @@ public class TestController {
     }
 
     private void takeTest(Questions question){
-            //получение объекта Questions с вопросам, вариантами, и правильным ответом
-            questionLabel.setText(question.getNumber() + " " + question.getQuestion());
-
+        //поля ответов сделать пустыми, так как разная длинна массива, чтобы гарантированно поля были пустыми при [].lenght < 6
+        setEmptyText();
+        //получение объекта Questions с вопросам, вариантами, и правильным ответом
+        questionLabel.setText(question.getNumber() + " " + question.getQuestion());
             //перебор массива String[] в Questions объекте и его распечатка
             int arrayQuestionAnswersLength = question.getAnswers().length;
             for (int i = 0; i < arrayQuestionAnswersLength; i++) {
@@ -174,5 +181,10 @@ public class TestController {
                 }
             }
         });
+    }
+    private void setEmptyText(){
+        for(Label label: labelList){
+            label.setText("");
+        }
     }
 }

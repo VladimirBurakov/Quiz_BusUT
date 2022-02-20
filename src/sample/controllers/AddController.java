@@ -7,8 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import sample.Main;
+import sample.dao.FileDataHandler;
+import sample.dao.JsonFileDataHandler;
 import sample.dao.model.Questions;
+import sample.globalconstants.FileConst;
+import sample.services.DataForTest;
 import sample.services.FXMLHelper;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -57,12 +63,12 @@ public class AddController extends AbstractDataController {
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = dataHandler.getQuestions();
+        list = dataHandler.getAllData();
         setInitialValue();
         fieldsBlockageController();
     }
     private void setInitialValue(){
-        questionNumberTextFieldId.setDisable(false);
+        //questionNumberTextFieldId.setDisable(false);
         questionTextAreaId.setDisable(true);
         firstTextAreaAnswerId.setDisable(true);
         secondTextAreaAnswerId.setDisable(true);
@@ -96,7 +102,7 @@ public class AddController extends AbstractDataController {
                 if(Pattern.matches("[1-4]\\.\\d{1,3}", rightAnswerString)){
                     questionNumberTextFieldId.setStyle("-fx-background-color: #AAFFAA");
                     questionTextAreaId.setDisable(false);
-                    questionNumberTextFieldId.setDisable(true);
+                    //questionNumberTextFieldId.setDisable(true);
                 }else{
                     questionNumberTextFieldId.setStyle("-fx-background-color: #FF1111");
                     FXMLHelper.setMessage("Должно быть число формата\n х.х х.хх или х.ххх\nпервое число от 1 до 4 включительно!");
@@ -192,7 +198,15 @@ public class AddController extends AbstractDataController {
     @FXML
     void add(ActionEvent event){
         readerFromForm();
-        dataHandler.add(list, counter);
-        setInitialValue();
+        try {
+            /*Main.setDataForTest(new DataForTest(new FileDataHandler()));  //Временно, нужен чтобы передавать все данные в засетанный источник
+            dataHandler = Main.getDataForTest().getDataHandler();
+            dataHandler.saveAllData(list, counter)*/;
+            dataHandler.add(list, counter);
+            setInitialValue();
+        } catch (IOException e) {
+            FXMLHelper.setMessage("Номер "+ list.get(counter).getNumber() +"\nуже существует!");
+            FXMLHelper.loadPage(FileConst.MESSAGE_WINDOWS);
+        }
     }
 }

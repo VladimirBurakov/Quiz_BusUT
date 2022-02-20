@@ -14,8 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.dao.model.Questions;
+import sample.globalconstants.FileConst;
 import sample.services.FXMLHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -131,7 +133,7 @@ public class RemoveController extends AbstractDataController{
     @FXML
     void initialize() {
         textAreas = new TextArea[]{firstTextAreaAnswerId, secondTextAreaAnswerId, thirdTextAreaAnswerId, fourthTextAreaAnswerId, fifthTextAreaAnswerId, sixthTextAreaAnswerId};
-        list = Main.getDataForTest().getList();
+        list = Main.getDataForTest().getDataHandler().getAllData();
         setData(list.get(0));
 
         forwardButtonId.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -198,11 +200,16 @@ public class RemoveController extends AbstractDataController{
     }
 
     @FXML
-    void remove(ActionEvent event) {              // переделать чтобы переписывал только текущий вариант!!!!!!!!!!!!!!!!!!!!!!!!!
-        dataHandler.remove(list, counter);
-        readerFromForm();
-        counter--;
-        setData(list.get(counter));
+    void remove(ActionEvent event) {
+        try {
+            dataHandler.remove(list, counter);
+            readerFromForm();
+            counter--;
+            setData(list.get(counter));
+        } catch (IOException e) {
+            FXMLHelper.setMessage("Номер "+ list.get(counter).getNumber() +"\nне существует!");
+            FXMLHelper.loadPage(FileConst.MESSAGE_WINDOWS);
+        }
     }
 }
 

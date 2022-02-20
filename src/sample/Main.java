@@ -29,7 +29,7 @@ public class Main extends Application {
 
     public static ArrayList<Questions>list = new ArrayList<>();
     public static void main(String[] args) {
-        dataForTest = new DataForTest(new MySQLDataHandler());
+        dataForTest = new DataForTest(new FileDataHandler());
         launch(args);
     }
     public static DataForTest getDataForTest(){
@@ -38,6 +38,11 @@ public class Main extends Application {
         }else{
             return  dataForTest;
         }
+    }
+
+    public static void setDataForTest(DataForTest dataForTest){
+        Main.dataForTest = dataForTest;
+
     }
 
 }

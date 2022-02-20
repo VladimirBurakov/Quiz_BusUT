@@ -34,7 +34,7 @@ public class ResultBoxController {
         CurrentUserDataSaver.saveCurrentUserToDataBase(); //сохрание результата теста
         User currentUser = CurrentUserDataSaver.getCurrentUser();
         this.messageLabel.setText("Ваш результат:");
-        String result = currentUser.getQuestionsAmount() + " из " + currentUser.getRightAnswersAmount();
+        String result = currentUser.getRightAnswersAmount() + " из " + currentUser.getQuestionsAmount();
         resultLabel.setText(result);
     }
 
