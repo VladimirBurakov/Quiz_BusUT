@@ -11,12 +11,12 @@ public class MySQLDataHandler implements DataHandler {
 
     @Override
     public List<Questions> getAllData() {
-        return  testDatabase.getDataBaseQuestions();
+        return  testDatabase.getAllDataFromMySQL();
     }
 
     @Override
     public List<Questions> getOnlyTestData() {
-        return null;
+        return testDatabase.getOnlyTestDataFromMySQL();
     }
 
     @Override
@@ -36,6 +36,6 @@ public class MySQLDataHandler implements DataHandler {
 
     @Override
     public void saveAllData(List<Questions> list, int counter) throws IOException {
-
+        testDatabase.saveAllDataToMySQL( list);
     }
 }

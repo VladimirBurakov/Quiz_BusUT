@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.dao.model.User;
+import sample.globalconstants.FileConst;
 import sample.services.CurrentUserDataSaver;
 import sample.services.FXMLHelper;
 
@@ -41,7 +42,7 @@ public class ResultBoxController {
     @FXML
    void toStat(ActionEvent event){
         okId.getScene().getWindow().hide();
-        Stage stage = FXMLHelper.loadPage("/sample/views/statPage.fxml");
+        Stage stage = FXMLHelper.loadPage(FileConst.STAT_PAGE);
         stage.setMinWidth(450);
         stage.setMinHeight(350);
         stage.setTitle("Статистка");

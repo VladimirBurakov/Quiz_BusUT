@@ -37,9 +37,7 @@ from
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="90af52fa-c19a-4868-b387-b1a09a373b29" object-ref="consoles/Quiz" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="90af52fa-c19a-4868-b387-b1a09a373b29">

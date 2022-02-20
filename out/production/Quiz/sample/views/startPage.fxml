@@ -60,10 +60,18 @@
          <children>
             <MenuButton mnemonicParsing="false" text="Stat" TilePane.alignment="TOP_LEFT">
               <items>
-                <MenuItem id="addId" fx:id="addMenuItemId" mnemonicParsing="false" onAction="#add" text="Добавить" />
-                <MenuItem id="editId" fx:id="editMenuItemId" mnemonicParsing="false" onAction="#edit" text="Редактировать" />
-                  <MenuItem id="editId" fx:id="removeMenuItemId1" mnemonicParsing="false" onAction="#remove" text="Удалить" />
-                  <MenuItem id="statId" fx:id="statMenuItemId" mnemonicParsing="false" onAction="#stat" text="Статистика" />
+                <MenuItem id="addId" mnemonicParsing="false" onAction="#add" text="Добавить" />
+                <MenuItem id="editId" mnemonicParsing="false" onAction="#edit" text="Редактировать" />
+                  <MenuItem id="editId" mnemonicParsing="false" onAction="#remove" text="Удалить" />
+                  <MenuItem id="statId" mnemonicParsing="false" onAction="#stat" text="Статистика" />
+                  <Menu mnemonicParsing="false" text="Источник данных">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#fileSource" text="File" />
+                        <MenuItem mnemonicParsing="false" onAction="#jsonSource" text="JSON" />
+                        <MenuItem mnemonicParsing="false" onAction="#mysqlSource" text="MySQL" />
+                        <MenuItem mnemonicParsing="false" onAction="#excelSource" text="Excel" />
+                    </items>
+                  </Menu>
               </items>
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">

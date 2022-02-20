@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.globalconstants.FileConst;
 import sample.services.CurrentUserDataSaver;
 import sample.dao.model.User;
 import sample.services.FXMLHelper;
@@ -41,7 +42,7 @@ public class RegistrationController {
             User user = new User(firstName, lastName);
             CurrentUserDataSaver.setCurrentUser(user);
             registrationButton.getScene().getWindow().hide();
-            stage = FXMLHelper.loadPage("/sample/views/startPage.fxml");
+            stage = FXMLHelper.loadPage(FileConst.START_PAGE);
             stage.setMinWidth(450);
             stage.setMinHeight(350);
             stage.setTitle("Старт теста");
@@ -49,7 +50,7 @@ public class RegistrationController {
             FXMLHelper.setMessage("Заполните поля!\n" +
                     "Это для вашего же блага,\n" +
                     "для анализа успешности прохождения.");
-            FXMLHelper.loadPage("/sample/views/messageWindow.fxml");
+            FXMLHelper.loadPage(FileConst.MESSAGE_WINDOWS);
         }
     }
 
@@ -60,7 +61,7 @@ public class RegistrationController {
         User user = new User(firstName, lastName);
         CurrentUserDataSaver.setCurrentUser(user);
         skipButton.getScene().getWindow().hide();
-        stage = FXMLHelper.loadPage("/sample/views/startPage.fxml");
+        stage = FXMLHelper.loadPage(FileConst.START_PAGE);
         stage.setMinWidth(450);
         stage.setMinHeight(350);
         stage.setTitle("Старт теста");

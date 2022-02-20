@@ -1,24 +1,74 @@
 package sample.db;
 
 import sample.dao.model.Questions;
+import sample.services.CurrentUserDataSaver;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestDatabase extends AbstractDatabase {
+    private String forTest = "";
 
    //получение списка Question
-    public List<Questions> getDataBaseQuestions(){
-        ArrayList<Questions> resultList = new ArrayList<>();
+    public List<Questions> getAllDataFromMySQL(){
+        List<Questions> resultList = new ArrayList<>();
+        Statement statement = null;
+        String quizQuery = "SELECT " + TestConst.QUIZ_TABLE + "." + TestConst.QUIZ_ID + ", " + TestConst.QUIZ_QNUMBER + ", " +
+                TestConst.QUIZ_QUESTION + ", " + TestConst.QUIZ_RESULT + " FROM " + TestConst.QUIZ_TABLE + forTest;
+
+        try {
+            statement = getDbConnection().createStatement();
+            ResultSet quizResultSet = statement.executeQuery(quizQuery);
+            int id;
+            String number;
+            String simpleQuestion;
+            int result;
+            Questions question;
+
+            while (quizResultSet.next()) {
+                id = quizResultSet.getInt(TestConst.QUIZ_ID);
+                number = quizResultSet.getString(TestConst.QUIZ_QNUMBER);
+                simpleQuestion = quizResultSet.getString(TestConst.QUIZ_QUESTION);
+                result = quizResultSet.getInt(TestConst.QUIZ_RESULT);
+
+                question = new Questions(simpleQuestion, new String[0], result, number, id);
+                resultList.add(question);
+            }
+
+            int tempId;
+            String answerQuery;
+            List<String> tempArrayList = new ArrayList<>();
+
+            for(int i = 0; i < resultList.size(); i++){
+                tempId = resultList.get(i).getId();
+                answerQuery = "SELECT " + TestConst.ANSWERS_QUIZID + ", " + TestConst.ANSWERS_ANSWER +
+                        " FROM " + TestConst.ANSWERS_TABLE + " WHERE " + TestConst.ANSWERS_QUIZID + " = " + tempId;
+                ResultSet answerResultSet = statement.executeQuery(answerQuery);
+                while(answerResultSet.next()){
+                    tempArrayList.add(answerResultSet.getString(TestConst.ANSWERS_ANSWER));
+                }
+                String[] answers = tempArrayList.toArray(new String[]{});
+                resultList.get(i).setAnswers(answers);
+                tempArrayList.clear();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resultList;
+    }
+
+    /*public List<Questions> getAllDataFromMySQL(){                 //старый вариант не работает с функцией rand()
+        List<Questions> resultList = new ArrayList<>();
         Statement statement = null;
         String commonQuery = "SELECT " + TestConst.QUIZ_TABLE + "." + TestConst.QUIZ_ID + ", " + TestConst.QUIZ_QNUMBER + ", " +
                 TestConst.QUIZ_QUESTION + ", " + TestConst.QUIZ_RESULT + ", " +
                 TestConst.ANSWERS_ANSWER + " FROM " + TestConst.QUIZ_TABLE + " RIGHT JOIN " + TestConst.ANSWERS_TABLE + " ON " +
-                TestConst.QUIZ_TABLE + "." + TestConst.QUIZ_ID + " = " + TestConst.ANSWERS_TABLE + "." + TestConst.ANSWERS_QUIZID;
+                TestConst.QUIZ_TABLE + "." + TestConst.QUIZ_ID + " = " + TestConst.ANSWERS_TABLE + "." + TestConst.ANSWERS_QUIZID + forTest;
         try {
             statement = getDbConnection().createStatement();
             ResultSet commonResultSet = statement.executeQuery(commonQuery);
-            ArrayList<String> tempArrayList = new ArrayList<>();
+            List<String> tempArrayList = new ArrayList<>();
             int id = 0;
             String number = "";
             String simpleQuestion = "";
@@ -60,9 +110,17 @@ public class TestDatabase extends AbstractDatabase {
             e.printStackTrace();
         }
         return resultList;
+    }*/
+
+    public List<Questions> getOnlyTestDataFromMySQL(){
+        int questionsAmount = CurrentUserDataSaver.getCurrentUser().getQuestionsAmount();
+        forTest = " ORDER BY rand() LIMIT " + questionsAmount;
+        List<Questions> result = getAllDataFromMySQL();
+        forTest = "";
+        return result;
     }
 
-    public void replaceAllToMySQL(List<Questions>questionsList) {
+    public void saveAllDataToMySQL(List<Questions>questionsList) {
         for(Questions question: questionsList){
             addToMySQL(question);
         }
