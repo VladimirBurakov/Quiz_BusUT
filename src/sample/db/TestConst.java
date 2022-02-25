@@ -8,7 +8,7 @@ class TestConst {
     static final String QUIZ_RESULT = "result";
 
     static final String ANSWERS_TABLE = "answers"; //таблица
-    static final String ANSWER_ID = "id";
-    static final String ANSWERS_QUIZID = "quizid";
+    static final String ANSWER_ARRAY_INDEX = "arrayindex";
+    static final String ANSWERS_QUIZ_ID = "quizid";
     static final String ANSWERS_ANSWER = "answer";
 }

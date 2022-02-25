@@ -42,8 +42,8 @@ public class TestDatabase extends AbstractDatabase {
 
             for(int i = 0; i < resultList.size(); i++){
                 tempId = resultList.get(i).getId();
-                answerQuery = "SELECT " + TestConst.ANSWERS_QUIZID + ", " + TestConst.ANSWERS_ANSWER +
-                        " FROM " + TestConst.ANSWERS_TABLE + " WHERE " + TestConst.ANSWERS_QUIZID + " = " + tempId;
+                answerQuery = "SELECT " + TestConst.ANSWERS_QUIZ_ID + ", " + TestConst.ANSWERS_ANSWER +
+                        " FROM " + TestConst.ANSWERS_TABLE + " WHERE " + TestConst.ANSWERS_QUIZ_ID + " = " + tempId;
                 ResultSet answerResultSet = statement.executeQuery(answerQuery);
                 while(answerResultSet.next()){
                     tempArrayList.add(answerResultSet.getString(TestConst.ANSWERS_ANSWER));
@@ -152,18 +152,18 @@ public class TestDatabase extends AbstractDatabase {
         } catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
-        int currentId = getCurrentId(question.getId());
+        //int currentId = getCurrentId(question.getId());
         String []answers = question.getAnswers();
 
         for(int i = 0; i < question.getAnswers().length; i++){
             editQuery  = "UPDATE " + TestConst.ANSWERS_TABLE + " SET " + TestConst.ANSWERS_ANSWER + " = ?"
-                    + " WHERE " + TestConst.ANSWERS_QUIZID + " = ? AND "
-                    + TestConst.ANSWER_ID + " = ?";
+                    + " WHERE " + TestConst.ANSWERS_QUIZ_ID + " = ? AND "
+                    + TestConst.ANSWER_ARRAY_INDEX + " = ?";
             try {
                 preparedStatement = this.getDbConnection().prepareStatement(editQuery);
                 preparedStatement.setString(1, answers[i]);
                 preparedStatement.setInt(2, question.getId());
-                preparedStatement.setInt(3, (currentId++));
+                preparedStatement.setInt(3, i);
                 preparedStatement.executeUpdate();
             } catch (SQLException  | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -188,11 +188,12 @@ public class TestDatabase extends AbstractDatabase {
             e.printStackTrace();
         }
         int maxId = getMaxId();
+        question.setId(maxId);
         String []answers = question.getAnswers();
         for(int i = 0; i < question.getAnswers().length; i++){
-            addQuery = "INSERT INTO " + TestConst.ANSWERS_TABLE + "(" + TestConst.ANSWERS_QUIZID + ", "
-                    + TestConst.ANSWERS_ANSWER + ")"
-                    + "VALUES(?, ?)";
+            addQuery = "INSERT INTO " + TestConst.ANSWERS_TABLE + "(" + TestConst.ANSWERS_QUIZ_ID + ", "
+                    + TestConst.ANSWERS_ANSWER + ", "+ TestConst.ANSWER_ARRAY_INDEX + ")"
+                    + "VALUES(?, ?, " + i +")";
             try {
                 prSt = this.getDbConnection().prepareStatement(addQuery);
                 prSt.setInt(1, maxId);
@@ -202,7 +203,6 @@ public class TestDatabase extends AbstractDatabase {
                 e.printStackTrace();
             }
         }
-        question.setId(maxId);
     }
 
     private int getMaxId() {
@@ -219,11 +219,12 @@ public class TestDatabase extends AbstractDatabase {
         }
         return id;
     }
-    private int getCurrentId(int quizId) {
+
+    /*private int getCurrentId(int quizId) {
         int firstAnswerId = 0;
         Statement statement = null;
         String query = "SELECT " + TestConst.ANSWER_ID + " FROM " + TestConst.ANSWERS_TABLE + " WHERE "
-                + TestConst.ANSWERS_QUIZID + " = " + quizId + " LIMIT 1";
+                + TestConst.ANSWERS_QUIZ_ID + " = " + quizId + " LIMIT 1";
         try{
             statement = getDbConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -233,5 +234,5 @@ public class TestDatabase extends AbstractDatabase {
             e.printStackTrace();
         }
         return firstAnswerId;
-    }
+    }*/
 }

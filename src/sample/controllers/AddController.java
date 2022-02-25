@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.dao.FileDataHandler;
 import sample.dao.JsonFileDataHandler;
+import sample.dao.MySQLDataHandler;
 import sample.dao.model.Questions;
 import sample.globalconstants.FileConst;
 import sample.services.DataForTest;
@@ -199,9 +200,9 @@ public class AddController extends AbstractDataController {
     void add(ActionEvent event){
         readerFromForm();
         try {
-            /*Main.setDataForTest(new DataForTest(new FileDataHandler()));  //Временно, нужен чтобы передавать все данные в засетанный источник
+            /*Main.setDataForTest(new DataForTest(new MySQLDataHandler()));  //Временно, нужен чтобы передавать все данные в засетанный источник
             dataHandler = Main.getDataForTest().getDataHandler();
-            dataHandler.saveAllData(list, counter)*/;
+            dataHandler.saveAllData(list, counter);*/
             dataHandler.add(list, counter);
             setInitialValue();
         } catch (IOException e) {
