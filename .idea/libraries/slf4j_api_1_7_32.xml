@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="slf4j-api-1.7.32">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../java_libs/poi-bin-5.2.0/ooxml-lib/slf4j-api-1.7.32.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

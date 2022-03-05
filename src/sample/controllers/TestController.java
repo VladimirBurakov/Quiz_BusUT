@@ -15,6 +15,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.dao.model.User;
+import sample.globalconstants.FileConst;
 import sample.services.CurrentUserDataSaver;
 import sample.dao.model.Questions;
 import sample.services.FXMLHelper;
@@ -158,12 +159,12 @@ public class TestController {
                 if(counter >= currentUser.getQuestionsAmount()){
                     nextButton.getScene().getWindow().hide();
                     if(!currentUser.getFirstName().isEmpty() || !currentUser.getLastName().isEmpty()){
-                        stage = FXMLHelper.loadPage("/sample/views/resultPage.fxml");
+                        stage = FXMLHelper.loadPage(FileConst.RESULT_PAGE);
                         stage.setMinWidth(300);
                         stage.setMinHeight(200);
                         stage.setTitle("Результат");
                     }else{
-                        stage = FXMLHelper.loadPage("/sample/views/registrationBeforeResultPage.fxml");
+                        stage = FXMLHelper.loadPage(FileConst.REGISTRATION_BEFORE_RESULT_PAGE);
                         stage.setMinWidth(300);
                         stage.setMinHeight(250);
                         stage.setTitle("Регистрация");

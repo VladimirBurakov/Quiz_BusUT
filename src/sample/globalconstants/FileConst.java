@@ -1,10 +1,10 @@
 package sample.globalconstants;
 
 public class FileConst {
-    public final static String JSON_FILE = "D:\\java_projects\\Quiz\\src\\sample\\dao\\fileData\\JSON_BAS_UT_Base.json";
+
     public final static String JSON_SAVE_DIRECTORY = "D:\\java_projects\\Quiz\\src\\sample\\dao\\fileData\\jsonFiles";
-    public final static String CSV_FILE = "D:\\java_projects\\Quiz\\src\\sample\\dao\\fileData\\BAS_UT_Base.csv";
     public final static String CSV_SAVE_DIRECTORY = "D:\\java_projects\\Quiz\\src\\sample\\dao\\fileData\\csvFiles";
+    public final static String XLSX_SAVE_DIRECTORY = "D:\\java_projects\\Quiz\\src\\sample\\dao\\fileData\\xlsxFiles";
 
     public final static String ADD_PAGE = "/sample/views/addPage.fxml";
     public final static String EDIT_PAGE = "/sample/views/editPage.fxml";

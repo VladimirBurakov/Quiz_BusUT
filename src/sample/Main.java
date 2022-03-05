@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.dao.*;
 import sample.dao.model.Questions;
+import sample.globalconstants.FileConst;
 import sample.services.DataForTest;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("views/registrationPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(FileConst.REGISTRATION_PAGE));
         primaryStage.setTitle("Burakov Bas UT Test Program");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(500);
@@ -29,7 +30,7 @@ public class Main extends Application {
 
     public static ArrayList<Questions>list = new ArrayList<>();
     public static void main(String[] args) {
-        dataForTest = new DataForTest(new FileDataHandler());
+        dataForTest = new DataForTest(new ExcelDataHandler());
         launch(args);
     }
     public static DataForTest getDataForTest(){
